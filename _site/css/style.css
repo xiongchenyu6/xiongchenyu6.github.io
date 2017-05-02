@@ -1,0 +1,25 @@
+
+*
+{
+  background-color : #ffffff;
+}
+
+* body
+{
+  display            : grid;
+  background-color   : #000000;
+  grid-template-rows : 1fr 1fr 1fr;
+  -webkit-transform  : rotateX(30deg);
+  -moz-transform     : rotateX(30deg);
+  -ms-transform      : rotateX(30deg);
+  -o-transform       : rotateX(30deg);
+  transform          : rotateX(30deg);
+  background         : -webkit-linear-gradient(30deg,#ff0000 0%,#ffff00 40%,#0000ff 100%);
+  background         : -moz-linear-gradient(30deg,#ff0000 0%,#ffff00 40%,#0000ff 100%);
+  background         : -ms-linear-gradient(30deg,#ff0000 0%,#ffff00 40%,#0000ff 100%);
+  background         : -o-linear-gradient(30deg,#ff0000 0%,#ffff00 40%,#0000ff 100%);
+  background         : linear-gradient(30deg,#ff0000 0%,#ffff00 40%,#0000ff 100%);
+}
+
+
+/* Generated with Clay, http://fvisser.nl/clay */
