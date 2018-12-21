@@ -10,13 +10,13 @@ myStylesheet = star ? do
   backgroundColor white
   body ? do
     display grid
-    backgroundColor black
-    "grid-template-rows" -: "1fr 1fr 1fr"
-    let rot = deg 30
-    transform (rotateX rot)
-    background $
-      linearGradient (angular rot)
-        [ ( red    ,   0 )
-        , ( yellow ,  40 )
-        , ( blue   , 100 )
-        ]
+    "grid-template-rows" -: "1fr 2fr 1fr"
+    header ? do
+      display grid
+      "grid-template-columns" -: "1fr 4fr 4fr"
+      "grid-template-areas" -: "'logo . options'"
+      ".logo" ? do
+        "grid-area" -: "logo"
+      ".options" ? do
+        display flex
+        "grid-area" -: "options"
