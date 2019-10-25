@@ -1,4 +1,5 @@
 ﻿_cache/
+_cache/*
 .stack-work/
 TAGS
 dist-newstyle/
