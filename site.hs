@@ -71,6 +71,6 @@ postCtx =
 
 config :: Configuration
 config = def
-    { deployCommand = "git branch -D split; git subtree split --prefix _site -b split;git checkout master;git merge split --no-edit; git push origin master:master;git checkout develop;",
+    { deployCommand = "git branch -D master; git subtree split --prefix _site -b master;git push -f origin master:master",
       inMemoryCache = True
     }

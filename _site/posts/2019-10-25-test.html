@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Hakyll Blog - Test</title>
+  <!-- <link rel="stylesheet" href="/css/style.css"> -->
+  <link rel="stylesheet" href="../css/syntax.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="../images/haskell-logo.png" alt="wrong"> <a href="../">My Hakyll Blog</a>
+    </div>
+    <nav class="options">
+      <a href="../">Home</a> <a href="../about.html">About</a> <a href="../contact.html">Contact</a> <a href="../archive.html">Archive</a>
+    </nav>
+  </header>
+  <main role="main">
+    <h1>Test</h1><article>
+    <section class="header">
+        Posted on October 25, 2019
+        
+            by Xiongchenyu
+        
+    </section>
+    <section>
+        <h1 id="fp-vs-oop">FP vs OOp</h1>
+<p>对于一个互联网公司的程序，代码的范式是很重要的，好的范式可以让你面对产品经理的指 示的时候痛苦感会降低， 这个时候架构就非常重要了。那么我将以scala为例，支持多范式 的语言不多，scala是各种范式都能hold比较好的。展示一下FP和OOP的优缺点。</p>
+<p>我们对架构先提出几点要求</p>
+<ol>
+<li>拓展起来不会影响现有代码的清晰度</li>
+<li>拓展起来的改动比较少</li>
+<li>代码简单易测</li>
+</ol>
+<p>假如有一天产品告诉你，来我们搞个计算器吧。第一期要实现加法和减法。那么你考虑的就 是这个</p>
+<blockquote>
+<p>(2 +3 ) + 4</p>
+</blockquote>
+<p>用scala程序表示起来, 就是要求值下面这个东西。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">val</span> expression = <span class="fu">Add</span>(<span class="fu">Add</span>(Number(<span class="dv">2</span>), Number(<span class="dv">3</span>)), Number(<span class="dv">4</span>))</span></code></pre></div>
+<h2 id="round-one">Round One</h2>
+<h3 id="oop">OOP</h3>
+<p>首先来了一个OOP程序员,拿起IDE，三军未动粮草先行, 先来个接口爽一下。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">trait</span> Expr {</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> eval: Double</span>
+<span id="cb2-3"><a href="#cb2-3"></a>}</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span></code></pre></div>
+<p>emm，不错，之后在快速继承一遍</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb3-1"><a href="#cb3-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">case</span> <span class="kw">class</span> Number(value: Double) <span class="kw">extends</span> Expr {</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="kw">override</span> <span class="kw">def</span> eval = value</span>
+<span id="cb3-4"><a href="#cb3-4"></a>}</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="kw">case</span> <span class="kw">class</span> <span class="fu">Add</span>(a: Expr, b: Expr) <span class="kw">extends</span> Expr {</span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="kw">override</span> <span class="kw">def</span> eval = a.<span class="fu">eval</span> + b.<span class="fu">eval</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>}</span>
+<span id="cb3-9"><a href="#cb3-9"></a></span></code></pre></div>
+<p>下面是见证奇迹的时刻</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb4-1"><a href="#cb4-1"></a>expression.<span class="fu">eval</span> <span class="co">//res0: Double = 9.0</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a></span></code></pre></div>
+<p>完美!</p>
+<h3 id="fp">FP</h3>
+<p>接着来了一个FP程序员，嘴里念叨着Functional core imperative shell, 首先把数据结构 和计算拆开来了</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb5-1"><a href="#cb5-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">trait</span> Expr</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">case</span> <span class="kw">class</span> Number(value: Double) <span class="kw">extends</span> Expr</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="kw">case</span> <span class="kw">class</span> <span class="fu">Add</span>(a: Expr, b: Expr) <span class="kw">extends</span> Expr</span>
+<span id="cb5-5"><a href="#cb5-5"></a></span></code></pre></div>
+<p>emm，纯数据结构清爽</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> <span class="fu">evaluate</span>(expression: Expr): Double = expression <span class="kw">match</span> {</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="kw">case</span> Number(a) =&gt; a</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="kw">case</span> <span class="fu">Add</span>(a, b) =&gt; <span class="fu">evaluate</span>(a) + <span class="fu">evaluate</span>(b)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>}</span></code></pre></div>
+<p>emm, 纯计算，清爽</p>
+<p>下面是见证奇迹的时刻</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">evaluate</span>(expression) <span class="co">//res0: Double = 9.0</span></span></code></pre></div>
+<p>完美!</p>
+<h2 id="round-2">Round 2</h2>
+<p>这个时候产品说了，这个计算器有点丑啊，能不能打印好看点</p>
+<h3 id="oop-1">OOP</h3>
+<p>OOP 程序员熟练的修改了接口（改动+1）</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">trait</span> Expr {</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">def</span> eval: Double</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="kw">def</span> prettyPrint: String</span>
+<span id="cb8-4"><a href="#cb8-4"></a>}</span>
+<span id="cb8-5"><a href="#cb8-5"></a></span></code></pre></div>
+<p>然后（改动+1 + 1） = 3处</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb9-1"><a href="#cb9-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">case</span> <span class="kw">class</span> Number(value: Double) <span class="kw">extends</span> Expr {</span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="kw">override</span> <span class="kw">def</span> eval = value</span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="kw">override</span> <span class="kw">def</span> print = value.<span class="fu">toString</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>}</span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="kw">case</span> <span class="kw">class</span> <span class="fu">Add</span>(a: Expr, b: Expr) <span class="kw">extends</span> Expr {</span>
+<span id="cb9-8"><a href="#cb9-8"></a>  <span class="kw">override</span> <span class="kw">def</span> eval = a.<span class="fu">eval</span> + b.<span class="fu">eval</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>  <span class="kw">override</span> <span class="kw">def</span> print = s”(${a.<span class="fu">print</span>} + ${b.<span class="fu">print</span>})”</span>
+<span id="cb9-10"><a href="#cb9-10"></a>}</span>
+<span id="cb9-11"><a href="#cb9-11"></a></span></code></pre></div>
+<h3 id="fp-1">FP</h3>
+<p>这就是加个方法的事儿（改动 +1) = 1处</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb10-1"><a href="#cb10-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">def</span> <span class="fu">print</span>(expression: Expr): String = expression <span class="kw">match</span> {</span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="kw">case</span> Number(a) =&gt; a.<span class="fu">toString</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="kw">case</span> <span class="fu">Add</span>(a, b) =&gt; s”(${<span class="fu">print</span>(a)} + ${<span class="fu">print</span>(b)})”</span>
+<span id="cb10-5"><a href="#cb10-5"></a>}</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span></code></pre></div>
+<h2 id="round-3">Round 3</h2>
+<p>产品又说了，只有加法不够呀，我们还需要个减法</p>
+<h3 id="oop-2">OOP</h3>
+<p>就是再实现一次接口呗（改动 +1)</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">case</span> <span class="kw">class</span> <span class="fu">Neg</span>(a: Expr) <span class="kw">extends</span> Expr {</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="kw">override</span> <span class="kw">def</span> eval = — a.<span class="fu">eval</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="kw">override</span> <span class="kw">def</span> print = s”-${a.<span class="fu">print</span>}”</span>
+<span id="cb11-4"><a href="#cb11-4"></a>}</span>
+<span id="cb11-5"><a href="#cb11-5"></a></span></code></pre></div>
+<h3 id="fp-2">FP</h3>
+<p>首先要拓展一个数据结构</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">case</span> <span class="kw">class</span> <span class="fu">Neg</span>(a: Expr) <span class="kw">extends</span> Expr</span>
+<span id="cb12-2"><a href="#cb12-2"></a></span></code></pre></div>
+<p>然后所有的函数都要随之改动</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb13-1"><a href="#cb13-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="kw">def</span> <span class="fu">evaluate</span>(expression: Expr): Double = expression <span class="kw">match</span> {</span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="kw">case</span> Number(a) =&gt; a</span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="kw">case</span> <span class="fu">Add</span>(a, b) =&gt; <span class="fu">evaluate</span>(a) + <span class="fu">evaluate</span>(b)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="kw">case</span> <span class="fu">Neg</span>(a) =&gt; — <span class="fu">evaluate</span>(a)</span>
+<span id="cb13-6"><a href="#cb13-6"></a>}</span>
+<span id="cb13-7"><a href="#cb13-7"></a></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="kw">def</span> <span class="fu">print</span>(expression: Expr): String = expression <span class="kw">match</span> {</span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="kw">case</span> Number(a) =&gt; a.<span class="fu">toString</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>  <span class="kw">case</span> <span class="fu">Add</span>(a, b) =&gt; s”(${<span class="fu">print</span>(a)} + ${<span class="fu">print</span>(b)})”</span>
+<span id="cb13-11"><a href="#cb13-11"></a>  <span class="kw">case</span> <span class="fu">Neg</span>(a) =&gt; s”-${<span class="fu">print</span>(a)}”</span>
+<span id="cb13-12"><a href="#cb13-12"></a>}</span>
+<span id="cb13-13"><a href="#cb13-13"></a></span></code></pre></div>
+<h1 id="结论">结论</h1>
+<p>没有银弹，OOP范式下数据结构的扩展成本比较低，FP范式下算子的扩展成本比较低。</p>
+    </section>
+</article>
+
+  </main>
+  <footer>
+    Site proudly generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+  </footer>
+</body>
+</html>
