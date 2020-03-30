@@ -1,76 +1,82 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Default (def)
+import           Data.Default                   ( def )
 import           Hakyll
-
+import           Data.Eq
+import           Control.Arrow
 
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
-    match "images/*" $ do
-        route   idRoute
-        compile copyFileCompiler
+  match "static/css/*.hs" $ do
+    route $ setExtension "css"
+    compile $ getResourceString >>= withItemBody (unixFilter "stack" ["runghc"])
 
-    match "css/*.hs" $ do
-        route   $ setExtension "css"
-        compile $ getResourceString >>= withItemBody (unixFilter "stack" ["runghc"])
-    match "css/*.css" $ do
-        route   idRoute
-        compile compressCssCompiler
+  match "static/*/*" $ do
+    route idRoute
+    compile copyFileCompiler
 
-    match (fromList ["about.rst", "contact.markdown"]) $ do
-        route   $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
+  match (fromList ["about.md", "contact.markdown"]) $ do
+    route $ setExtension "html"
+    compile
+      $   pandocCompiler
+      >>= loadAndApplyTemplate "templates/page.html"    siteCtx
+      >>= loadAndApplyTemplate "templates/default.html" siteCtx
+      >>= relativizeUrls
 
-    match "posts/*" $ do
-        route $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
-            >>= relativizeUrls
+  match "posts/*" $ do
+    route $ setExtension "html"
+    compile
+      $   pandocCompiler
+      >>= loadAndApplyTemplate "templates/post.html"    postCtx
+      >>= loadAndApplyTemplate "templates/default.html" postCtx
+      >>= relativizeUrls
 
-    create ["archive.html"] $ do
-        route idRoute
-        compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) <>
-                    constField "title" "Archives"            <>
-                    defaultContext
+  create ["archive.html"] $ do
+    route idRoute
+    compile $ do
+      posts <- recentFirst =<< loadAll "posts/*"
+      let archiveCtx =
+            listField "posts" postCtx (return posts)
+              <> constField "title" "Archives"
+              <> siteCtx
 
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                >>= relativizeUrls
+      makeItem ""
+        >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
+        >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+        >>= relativizeUrls
 
+  match "index.html" $ do
+    route idRoute
+    compile $ do
+      posts <- recentFirst =<< loadAll "posts/*"
+      let indexCtx =
+            listField "posts" postCtx (return posts)
+              <> constField "title" "Home"
+              <> siteCtx
 
-    match "index.html" $ do
-        route idRoute
-        compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let indexCtx =
-                    listField "posts" postCtx (return posts) <>
-                    constField "title" "Home"                <>
-                    defaultContext
+      getResourceBody
+        >>= applyAsTemplate indexCtx
+        >>= loadAndApplyTemplate "templates/default.html" indexCtx
+        >>= relativizeUrls
 
-            getResourceBody
-                >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
-                >>= relativizeUrls
-
-    match "templates/*" $ compile templateBodyCompiler
-
+  match "templates/*" $ compile templateBodyCompiler
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
-postCtx =
-    dateField "date" "%B %e, %Y" <>
-    defaultContext
+postCtx = dateField "date" "%B %e, %Y" <> siteCtx
+
+siteCtx :: Context String
+siteCtx =
+  constField "baseurl" "http://localhost:8000"
+    <> constField "twitter_username" "xiongchenyu"
+    <> constField "github_username"  "xiongchenyu6"
+    <> constField "site_description" "My persion website"
+    <> defaultContext
 
 config :: Configuration
 config = def
-    { deployCommand = "git branch -D master; git subtree split --prefix _site -b master;git push -f origin master:master",
-      inMemoryCache = True
-    }
+  { deployCommand =
+    "git branch -D master; git subtree split --prefix _site -b master;git push -f origin master:master"
+  , inMemoryCache = True
+  }
