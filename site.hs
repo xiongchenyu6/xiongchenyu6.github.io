@@ -2,8 +2,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Default                   ( def )
 import           Hakyll
-import           Data.Eq
-import           Control.Arrow
 
 --------------------------------------------------------------------------------
 main :: IO ()
@@ -20,7 +18,7 @@ main = hakyllWith config $ do
     route idRoute
     compile copyFileCompiler
 
-  match (fromList ["about.md", "contact.markdown"]) $ do
+  match (fromList ["resume/resume.org", "contact.org"]) $ do
     route $ setExtension "html"
     compile
       $   pandocCompiler
@@ -30,17 +28,16 @@ main = hakyllWith config $ do
 
   tags <- buildTags "posts/*" (fromCapture "tags/*.html")
 
-  tagsRules tags $ \tag pattern -> do
+  tagsRules tags $ \tag ptn -> do
     let desc = "Posts tagged \"" ++ tag ++ "\""
     route idRoute
     compile $ do
-      posts <- recentFirst =<< loadAll pattern
+      posts <- recentFirst =<< loadAll ptn
       let ctx =
             constField "title" tag
               <> listField "posts" (postCtx tags) (return posts)
               <> constField "desc" desc
               <> siteCtx
-
       makeItem ""
         >>= loadAndApplyTemplate "templates/archive.html" ctx
         >>= loadAndApplyTemplate "templates/default.html" ctx
@@ -63,7 +60,6 @@ main = hakyllWith config $ do
               <> constField "title" "Archives"
               <> constField "desc" "Here you can find all my previous posts:"
               <> siteCtx
-
       makeItem ""
         >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
         >>= loadAndApplyTemplate "templates/default.html" archiveCtx
