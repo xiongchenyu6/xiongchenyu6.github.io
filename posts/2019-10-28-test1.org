@@ -1,6 +1,7 @@
 ---
 title: Test
 author: Xiongchenyu
+tags: haskell
 ---
 
 * FP vs OOP 2

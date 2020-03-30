@@ -24,12 +24,29 @@ main = hakyllWith config $ do
       >>= loadAndApplyTemplate "templates/default.html" siteCtx
       >>= relativizeUrls
 
+  tags <- buildTags "posts/*" (fromCapture "tags/*.html")
+
+  tagsRules tags $ \tag pattern -> do
+    let title = "Posts tagged \"" ++ tag ++ "\""
+    route idRoute
+    compile $ do
+      posts <- recentFirst =<< loadAll pattern
+      let ctx =
+            constField "title" title
+              `mappend` listField "posts" (postCtx tags) (return posts)
+              `mappend` siteCtx
+
+      makeItem ""
+        >>= loadAndApplyTemplate "templates/archive.html" ctx
+        >>= loadAndApplyTemplate "templates/default.html" ctx
+        >>= relativizeUrls
+
   match "posts/*" $ do
     route $ setExtension "html"
     compile
       $   pandocCompiler
-      >>= loadAndApplyTemplate "templates/post.html"    postCtx
-      >>= loadAndApplyTemplate "templates/default.html" postCtx
+      >>= loadAndApplyTemplate "templates/post.html"    (postCtx tags)
+      >>= loadAndApplyTemplate "templates/default.html" (postCtx tags)
       >>= relativizeUrls
 
   create ["archive.html"] $ do
@@ -37,7 +54,7 @@ main = hakyllWith config $ do
     compile $ do
       posts <- recentFirst =<< loadAll "posts/*"
       let archiveCtx =
-            listField "posts" postCtx (return posts)
+            listField "posts" (postCtx tags) (return posts)
               <> constField "title" "Archives"
               <> siteCtx
 
@@ -51,7 +68,7 @@ main = hakyllWith config $ do
     compile $ do
       posts <- recentFirst =<< loadAll "posts/*"
       let indexCtx =
-            listField "posts" postCtx (return posts)
+            listField "posts" (postCtx tags) (return posts)
               <> constField "title" "Home"
               <> siteCtx
 
@@ -62,9 +79,15 @@ main = hakyllWith config $ do
 
   match "templates/*" $ compile templateBodyCompiler
 
+  match "404.html" $ do
+    route idRoute
+    compile
+      $   pandocCompiler
+      >>= loadAndApplyTemplate "templates/default.html" defaultContext
+
 --------------------------------------------------------------------------------
-postCtx :: Context String
-postCtx = dateField "date" "%B %e, %Y" <> siteCtx
+postCtx :: Tags -> Context String
+postCtx tags = tagsField "tags" tags <> dateField "date" "%B %e, %Y" <> siteCtx
 
 siteCtx :: Context String
 siteCtx =

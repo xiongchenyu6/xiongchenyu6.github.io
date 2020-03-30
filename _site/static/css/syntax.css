@@ -170,3 +170,10 @@ code span.wa {
   font-weight: bold;
   font-style: italic;
 } /* Warning */
+
+#all-comments {
+  display: none !important;
+}
+.comments-open {
+  display: none !important;
+}
