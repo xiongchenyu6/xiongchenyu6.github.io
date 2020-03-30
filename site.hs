@@ -75,6 +75,7 @@ main = hakyllWith config $ do
       posts <- recentFirst =<< loadAll "posts/*"
       let indexCtx =
             listField "posts" (postCtx tags) (return posts)
+              <> field "tags" (\_ -> renderTagList tags)
               <> constField "title" "Home"
               <> siteCtx
 
@@ -84,12 +85,6 @@ main = hakyllWith config $ do
         >>= relativizeUrls
 
   match "templates/*" $ compile templateBodyCompiler
-
-  match "404.html" $ do
-    route idRoute
-    compile
-      $   pandocCompiler
-      >>= loadAndApplyTemplate "templates/default.html" siteCtx
 
 --------------------------------------------------------------------------------
 postCtx :: Tags -> Context String
