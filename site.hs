@@ -16,6 +16,10 @@ main = hakyllWith config $ do
     route idRoute
     compile copyFileCompiler
 
+  match "posts/generated/*" $ do
+    route idRoute
+    compile copyFileCompiler
+
   match (fromList ["about.md", "contact.markdown"]) $ do
     route $ setExtension "html"
     compile
@@ -27,14 +31,15 @@ main = hakyllWith config $ do
   tags <- buildTags "posts/*" (fromCapture "tags/*.html")
 
   tagsRules tags $ \tag pattern -> do
-    let title = "Posts tagged \"" ++ tag ++ "\""
+    let desc = "Posts tagged \"" ++ tag ++ "\""
     route idRoute
     compile $ do
       posts <- recentFirst =<< loadAll pattern
       let ctx =
-            constField "title" title
-              `mappend` listField "posts" (postCtx tags) (return posts)
-              `mappend` siteCtx
+            constField "title" tag
+              <> listField "posts" (postCtx tags) (return posts)
+              <> constField "desc" desc
+              <> siteCtx
 
       makeItem ""
         >>= loadAndApplyTemplate "templates/archive.html" ctx
@@ -56,6 +61,7 @@ main = hakyllWith config $ do
       let archiveCtx =
             listField "posts" (postCtx tags) (return posts)
               <> constField "title" "Archives"
+              <> constField "desc" "Here you can find all my previous posts:"
               <> siteCtx
 
       makeItem ""
@@ -83,7 +89,7 @@ main = hakyllWith config $ do
     route idRoute
     compile
       $   pandocCompiler
-      >>= loadAndApplyTemplate "templates/default.html" defaultContext
+      >>= loadAndApplyTemplate "templates/default.html" siteCtx
 
 --------------------------------------------------------------------------------
 postCtx :: Tags -> Context String
@@ -91,7 +97,7 @@ postCtx tags = tagsField "tags" tags <> dateField "date" "%B %e, %Y" <> siteCtx
 
 siteCtx :: Context String
 siteCtx =
-  constField "baseurl" "http://localhost:8000"
+  constField "baseurl" ""
     <> constField "twitter_username" "xiongchenyu"
     <> constField "github_username"  "xiongchenyu6"
     <> constField "site_description" "My persion website"

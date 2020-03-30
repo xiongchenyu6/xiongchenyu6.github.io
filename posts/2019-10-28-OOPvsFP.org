@@ -1,7 +1,7 @@
 ---
-title: Test
+title: OOP和FP在架构弹性的比较2
 author: Xiongchenyu
-tags: haskell
+tags: scala, fp
 ---
 
 * FP vs OOP 2
@@ -129,3 +129,23 @@ implicit val PrettyPrintNegInstance = new PrettyPrint[Neg]{
  一种名为Visitor Pattern的设计模式，将接口概念引入朴素FP中可以形成一种叫type
  class的设计模式。范式圣战并没有什么乱用，无论OOP或者是FP都可以写出面向扩展的代
  码，而且很容易相互转换。
+
+  #+BEGIN_SRC plantuml :exports results :file generated/workflow.png
+  [*] -> TODO
+  note right of TODO
+    Task Start
+  end note
+  state Finish {
+  TODO -> NEXT
+  NEXT -> DONE
+  }
+  state Unfinish {
+  TODO -> WAITING
+  NEXT -> WAITING
+  WAITING -> HOLD
+  HOLD -> CANCEL
+  }
+  #+END_SRC
+
+  #+RESULTS:
+  [[file:generated/workflow.png]]
