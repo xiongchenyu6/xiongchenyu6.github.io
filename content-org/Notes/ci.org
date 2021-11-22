@@ -1,0 +1,126 @@
+:PROPERTIES:
+:ID:       b7503136-23b1-4c16-8ba2-bbb7013babe5
+:END:
+#+title: ci
+#+date: [2023-01-20 Fri 19:34]
+
+# Local IspellDict: en
+#+STARTUP: showeverything
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2019 Jens Lechtenbörger
+
+#+OPTIONS: reveal_width:1500 reveal_height:1000
+
+
+# Enable klipse, but disable scaling, which interferes.
+#+OPTIONS: reveal_klipsify_src:t
+#+REVEAL_KLIPSE_SETUP: (("html" "selector_eval_html" "language-klipse-html") ("javascript" "selector_eval_js" "language-klipse-javascript") ("js" "selector_eval_js" "language-klipse-js") ("python" "selector_eval_python_client" "language-klipse-python"))
+
+
+#+REVEAL_MIN_SCALE: 1.0
+#+REVEAL_MAX_SCALE: 1.0
+#+REVEAL_MULTIPLEX_ID: 726c1ea60930d10c
+#+REVEAL_MULTIPLEX_SECRET: 16702162480405693296
+# Some optional settings for CodeMirror.
+#+REVEAL_CODEMIRROR_CONFIG: codemirror_options_in: {
+#+REVEAL_CODEMIRROR_CONFIG:   lineNumbers: true,
+#+REVEAL_CODEMIRROR_CONFIG:   autoCloseBrackets: true
+#+REVEAL_CODEMIRROR_CONFIG: }
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+
+#+Author: Freeman xiong
+
+#+PANDOC_OPTIONS: self-contained:t
+#+PANDOC_OPTIONS: pdf-engine:tectonic
+
+* Headline with data-auto-animate
+:PROPERTIES:
+:reveal_extra_attr: data-auto-animate
+:END:
+
+* Headline with data-auto-animate
+:PROPERTIES:
+:reveal_extra_attr: data-auto-animate
+:END:
+
+* {{{color(red,This is a sample sentence in red text color.)}}}
+
+* 纯函数编程与加密货币
+* 文学编程
+** 方便分享
+** 发送邮件
+* 防御性编程
+* 纯函数编程与前端
+* 纯函数编程与流计算
+* 纯函数式运维
+* 宏
+
+* Scheduler
+** HTML and CSS
+#+ATTR_REVEAL: :code_attribs roll-in
+#+BEGIN_SRC html
+<style>
+h1.demo-headline { color: blue; }
+p.demo-para { color: green; }
+#demo-id { color: yellow; }
+</style>
+<h1 class="">Hello World!</h1>
+<p class="demo-para">This is a paragraph of text with class “demo-para”.</p>
+<p id="demo-id">This is another paragraph with id “demo-id”.</p>
+#+END_SRC
+** Clojure
+# Code copied from there:
+# https://github.com/timothypratley/asciidoctor-revealjs-klipse/issues/8
+#+begin_src clojure
+(defn greet [person]
+  (str "Hello " person))
+(map greet ["Alice" "Bob" "Carol"])
+#+end_src
+
+* page 1
+#+REVEAL_HTML: <div style="display: grid; grid-template-columns: auto auto auto;">
+
+#+DOWNLOADED: screenshot @ 2022-12-05 13:36:25
+[[file:page_1/2022-12-05_13-36-25_screenshot.png]]
+
+- Stuck? - Steckst fest?
+- Experiment/Try - Experimentieren
+- Document - Dokumentieren
+- Ask/Move on! - Anfragen/Hilfe holen
+#+REVEAL_HTML: <div>
+- haho
+- hi
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+* page 2
+** sh
+#+ATTR_REVEAL: :frag (grow shrink zoom-in fade-out none) :frag_idx (4 3 2 1 -)
+   * I will grow.
+   * I will shrink.
+   * I zoomed in.
+   * I will fade out.
+   * I don't fragment.
+** code
+#+begin_src js
+console.log("Hello World!");
+#+end_src
+** scala                                                             :ATTACH:
+:PROPERTIES:
+:ID:       348C13EA-FA0D-46DA-BA71-BF3B990297A0
+:END:
+
+#+begin_src scala
+sealed trait Maybe[+T]
+final case object Empty extends Maybe[Nothing]
+final case class Just[T](t: T) extends Maybe[T]
+#+end_src
+
+#+RESULTS:
+: defined trait Maybe
+: defined object Empty
+: defined class Just
+
+#+DOWNLOADED: screenshot @ 2022-02-10 15:50:45
+[[attachment:2022-02-10_15-50-45_screenshot.png]]
+

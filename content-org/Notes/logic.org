@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       fdb8f64b-f038-455c-8808-0bf4905eebb4
+:END:
+#+title: logic
+#+date: [2021-12-21 Tue 20:37]
+
+* Propositional logic
+** conditional
+val(\alpha -> \beta) = 1 if val(\alpha) = 0 or val(\beta) = 1
+
+| \alpha | \beta | \alpha -> \beta |
+| 0 | 0 |      1 |
+| 0 | 1 |      1 |
+| 1 | 0 |      0 |
+| 1 | 1 |      1 |
+** biconditional
+
+val(\alpha <-> \beta) = 1 if val(\alpha) = val(\beta)
+
+| \alpha | \beta | \alpha <-> \beta |
+| 0 | 0 |       1 |
+| 0 | 1 |       0 |
+| 1 | 0 |       0 |
+| 1 | 1 |       1 |
+
+* contingent
+don't true or false

@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       91091F87-E013-412D-9DEE-60AFDF9F1316
+:END:
+#+title: Apl
+#+date: [2022-02-08 Tue 00:08]
+* algo
+** buzz fizz
+#+begin_src gnu-apl
+{∊(3↑(0=3 5|⍵)∪1)/'Fizz' 'Buzz'⍵}¨⍳30
+#+end_src
+
+** Trapping Rain Water
+#+begin_src gnu-apl
+solution ← {+/((⌈\⍵)⌊⌽⌈\⌽⍵)-⍵}
+#+end_src

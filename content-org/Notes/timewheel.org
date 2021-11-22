@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       42ad4f9d-c777-45ec-b3d7-1fc9a31c1bb7
+:END:
+#+title: timewheel
+#+date: [2021-12-18 Sat 19:12]
+
+
+*  时间轮盘
+
+[[attachment:_20211218_191321screenshot.png]]
+ :ATTACH:

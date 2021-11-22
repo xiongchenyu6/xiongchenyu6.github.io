@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       95f69c2b-32bc-4f78-be81-573cca07b53b
+:END:
+#+title: iam
+#+date: [2023-01-28 Sat 08:10]
+#+author:
+#+hugo_custom_front_matter: :author "Xiong ChenYu"
+
+* iam
+fdsadasf
+
+iam can bind to ec2
+
+check ~fetch-ec2-metadata.service~ if iam roles not working

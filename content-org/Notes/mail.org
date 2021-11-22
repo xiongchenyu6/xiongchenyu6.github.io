@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       775984f0-764d-43c2-ad3a-fadb8686c030
+:END:
+#+title: mail
+#+date: [2022-10-06 Thu 20:24]
+
+#+begin_src 
+doveadm fetch -u bob "text" MAILBOX INBOX UNSEEN
+#+end_src

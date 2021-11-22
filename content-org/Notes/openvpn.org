@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       51709caa-fbc4-4128-9e99-9bbbee197a9c
+:END:
+#+title: openvpn
+#+date: [2022-09-11 Sun 19:47]
+* load ovpn file
+#+begin_src sh
+nmcli connection import type openvpn file client.ovpn
+#+end_src

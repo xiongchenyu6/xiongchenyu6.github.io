@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       8714a9f1-a815-4097-802a-7db9602cdcf8
+:END:
+#+title: Hive
+#+date: [2021-11-22 Mon 11:06]
+#+begin_src sql
+CREATE TABLE midasbuy_tob_t_tob_remitpay_records_v1(
+    statis_date STRING,
+    freceiptno STRING,
+    fvirtualacct STRING,
+    fcurrencyrate STRING,
+    fbiztype STRING,
+    fmdmname STRING,
+    fbankaccountnum STRING,
+    fmdmid STRING,
+    fopenid STRING,
+    famount STRING,
+    faccounttype STRING,
+    fpaidname STRING,
+    fcurrencycode STRING,
+    freceiptdate STRING,
+    fmerchantid STRING,
+    frequesttime STRING
+)
+PARTITION BY RANGE( statis_date )
+(
+    PARTITION p_20211121 VALUES LESS THAN ( '20211122' ),
+    PARTITION default
+)
+STORED AS ORCFILE COMPRESS;
+#+end_src

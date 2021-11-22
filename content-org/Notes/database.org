@@ -1,0 +1,46 @@
+:PROPERTIES:
+:ID:       25e95552-d9a8-4cf3-81db-b34c5ec36cd4
+:END:
+#+title: Database
+#+date: [2021-11-20 Sat 16:20]
+* CAP
+** ACID
+- atomicity
+each transaction is treated as a single "unit", which either succeeds completely, or fails completely.
+- consistency
+Consistency ensures that a transaction can only bring the database from one valid state to another
+- isolation
+Isolation ensures that concurrent execution of transactions leaves the database in the same state that would have been obtained if the transactions were executed sequentially.
+- durability
+Durability guarantees that once a transaction has been committed, it will remain committed even in the case of a system failure
+** BASE
+- Basically Avaliable
+- Soft state
+* MySQL
+** Fresh set up on arch Linux
+#+BEGIN_SRC sh
+systemctl stop mysql
+rm -R /var/lib/mysql/*
+mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+systemctl start mysql
+#+END_SRC
+
+#+BEGIN_SRC mysql
+show database;
+show tables;
+use xxx;
+#+END_SRC
+** Export SQL
+#+BEGIN_SRC sh
+mysqldump db_name > backup-file.sql
+#+END_SRC
+** Import SQL
+#+BEGIN_SRC sh
+mysql db_name < backup-file.sql
+#+END_SRC
+* Neo4j
+delete all node
+#+BEGIN_SRC neo4j
+MATCH (n)
+DETACH DELETE n
+#+END_SRC

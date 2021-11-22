@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       252551c0-0eba-4320-bc97-6e630e6e20ce
+:END:
+#+title: systemd
+#+date: [2021-11-24 Wed 18:13]
+
+* network
+ systemd-networkd come with systemd-resolved, if you want to use dnsmasq you should unable it first
+
+
+* core dump
+#+begin_src sh
+coredumpctl
+#+end_src

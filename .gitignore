@@ -16,3 +16,14 @@ hugo.linux
 
 .DS_Store
 .hugo_build.lock
+
+*.tex
+*.pdf
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.toc
+*.log
+*.vrb
+.direnv/

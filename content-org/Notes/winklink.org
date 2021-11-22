@@ -1,0 +1,94 @@
+:PROPERTIES:
+:ID:       59a98aab-da13-45d5-bb03-e334a80a9739
+:END:
+#+title: winklink
+#+date: [2022-12-08 Thu 17:23]
+
+* winklink deployment plan
+
+** background
+
+| feature/product           | winklink | chainlink |
+|---------------------------+----------+-----------|
+| Data Feeds (price feeds)  | yes      | yes       |
+| - proof of reverse)       | no       | yes       |
+| - Nft Floor price         | no       | yes       |
+| VRF                       | yes      | yes       |
+| Any Api                   | no       | yes       |
+| Smart contract automation | no       | yes       |
+
+** develop plan
+
+*** current situation
+Core logic for each individual node is to use adapter to call api and return data to chainlink node.
+
+#+begin_src plantuml :file i/winklink.png :cmdline -charset UTF-8 :exports code
+@startuml
+!include <cloudogu/common>
+!include <cloudogu/dogus/jenkins>
+!include <cloudogu/dogus/cloudogu>
+!include <cloudogu/dogus/scm>
+!include <cloudogu/dogus/smeagol>
+!include <cloudogu/dogus/nexus>
+!include <cloudogu/tools/k8s>
+
+node "Tron公链" <<$cloudogu>> {
+	DOGU_NEXUS(pair, "价格对合约") #ffffff
+	DOGU_NEXUS(wink, "wink代币合约") #ffffff
+}
+
+DOGU_SMEAGOL(n, "喂价节点") #ffffff
+
+database "价格采集配置" as pc
+
+pair --> wink : "奖励币种"
+n <-- pc : "读取配置"
+n --> pair : "调用价格对合约写入价格"
+pair --> n : "奖励wink代币"
+
+@enduml
+#+end_src
+
+#+RESULTS:
+[[file:i/winklink.png]]
+
+
+*** Phase 1
+Chainlink any api
+#+begin_src plantuml :file i/winklink1.png :cmdline -charset UTF-8 :exports code
+@startuml
+!include <cloudogu/common>
+!include <cloudogu/dogus/jenkins>
+!include <cloudogu/dogus/cloudogu>
+!include <cloudogu/dogus/scm>
+!include <cloudogu/dogus/smeagol>
+!include <cloudogu/dogus/nexus>
+!include <cloudogu/tools/k8s>
+
+actor "有数据需求的用户" as user
+
+node "Tron公链" <<$cloudogu>> {
+	DOGU_NEXUS(collector, "采集器合约") #ffffff
+	DOGU_NEXUS(pair, "价格对合约") #ffffff
+	DOGU_NEXUS(wink, "wink代币合约") #ffffff
+	DOGU_NEXUS(pc, "价格采集配置") #ffffff
+}
+
+DOGU_SMEAGOL(n, "喂价节点") #ffffff
+
+user --> pc : "1.配置价格采集合约"
+user --> pair : "2.生产查询价格对合约"
+user --> collector : "3.注册对应的采集节点"
+collector --> n : "4.喂价节点计算需要采集的数据"
+pair --> wink : "奖励币种"
+n <-- pc : "5.读取配置"
+n --> pair : "6.调用价格对合约写入价格"
+pair --> n : "7.奖励wink代币"
+
+@enduml
+
+#+end_src
+
+#+RESULTS:
+[[file:i/winklink1.png]]
+

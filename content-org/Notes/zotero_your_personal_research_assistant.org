@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       c12f9e95-80b7-4891-811a-6754def8f9ff
+:ROAM_REFS: https://www.zotero.org/
+:END:
+#+title: zotero
+Your personal research assistant
+Add https://retorque.re/zotero-better-bibtex/exporting/auto/ and export to better [[id:a2edb5c8-49ba-4adb-b90a-c6599a9e55aa][bibtex]] to sync

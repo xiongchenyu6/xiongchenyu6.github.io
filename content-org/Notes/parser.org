@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       a883ef0a-6ea3-455a-9288-0cce33c1e233
+:END:
+#+title: Parser
+#+date: [2021-12-04 Sat 05:47]
+
+* Grammer
+[[id:7f4c5ad4-e8e5-44d8-9db4-ff8e0c0be924][Chomsky hierarchy - Wikipedia]]
+
+

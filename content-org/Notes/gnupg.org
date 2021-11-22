@@ -1,0 +1,95 @@
+:PROPERTIES:
+:ID:       a63d52fa-8d80-478a-9c96-d2bcf66fefca
+:END:
+#+title: GNUPG
+#+date: [2021-11-20 Sat 16:12]
+
+
+
+* Setup permission
+#+begin_src sh
+find ~/.gnupg -type f -exec chmod 600 {} \; # Set 600 for files
+find ~/.gnupg -type d -exec chmod 700 {} \; # Set 700 for directories
+#+end_src
+* GNUPG
+** Encryption
+Use recipient public key to encrypt message so only recipient can decrypt and view it
+[[attachment:_20211121_110136screenshot.png]]
+*** decrypt :ATTACH:
+#+BEGIN_SRC shell
+gpg --decrypt a.sh.gpg
+gpg -q --pinentry-mode loopback --for-your-eyes-only --no-tty -d ~/.password/gmail.gpg
+#+END_SRC
+
+#+RESULTS:
+
+*** encrypt
+#+BEGIN_SRC shell
+gpg --encrypt -r person@email.com name_of_file
+gpg --encrypt name_of_file
+#+END_SRC
+** Sign
+Use sender private key to encrypt message so everyone can verify the sender identity
+[[attachment:_20211121_110201screenshot.png]]
+
+#+begin_src sh
+gpg -b sample.txt
+gpg --verify sample.txt.sig sample.txt
+gpg --verify sample.txt.sig # save folder
+#+end_src
+
+since *.sig file is not readable more commonly use clear text signature shown as below
+
+#+begin_src sh
+gpg --clear-sign sample.txt
+gpg --verify sample.txt.asc
+#+end_src
+*** Sign string
+#+begin_src sh
+echo "ee7d52053138e716702261914a330059ed470b1106b75569b18326e9c1e04d27" | gpg -a --default-key 5AF7AFBF695E8A5D --detach-sig
+#+end_src
+
+** Signature alongside encrypt
+
+#+begin_src sh
+gpg -s sample.txt # sign sample.txt.sig
+gpg --verify a.sh.gpg
+gpg --decrypt a.sh.gpg
+#+end_src
+
+
+** Transfer key
+*** export
+#+begin_src shell
+gpg --export --armor your@id.here > your@id.here.pub.asc
+gpg --export-secret-keys --armor your@id.here > your@id.here.priv.asc
+gpg --export-secret-subkeys --armor your@id.here > your@id.here.sub_priv.asc
+gpg --export-ownertrust > ownertrust.txt
+#+end_src
+*** delete
+#+begin_src sh
+gpg –delete-secret-keys
+gpg –delete-key
+#+end_src
+*** import
+#+begin_src sh
+gpg --import your@id.here.pub.asc
+gpg --import your@id.here.priv.asc
+gpg --import your@id.here.sub_priv.asc
+gpg --import-ownertrust ownertrust.txt
+#+end_src
+*** trust imported key
+#+begin_src sh
+gpg --edit-key your@id.here
+gpg> trust
+Your decision? 5 (Ultimate trust)
+#+end_src
+*** change expire date
+change primary key then secondary
+#+begin_src sh
+gpg --list-keys
+gpg --edit-key xiongchenyu
+g> expire
+g> key 1
+g> expire
+#+end_src

@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       ab5ef9ba-85d0-4814-bfdb-3f03c08ad088
+:END:
+#+title: ocr
+#+date: [2023-01-31 Tue 16:11]
+
+* Pacemaker
+
+* Report generation
+
+* Transmission

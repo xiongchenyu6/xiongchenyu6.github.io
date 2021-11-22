@@ -1,0 +1,150 @@
+:PROPERTIES:
+:ID:       e907555f-5fce-4869-9594-ccee365871f9
+:END:
+#+title: leetcode
+#+date: [2021-11-28 Sun 01:22]
+* random easy question
+
+#+name: somedata
+| nb    | sqr | noise |
+|-------+-----+-------|
+| zero  |   0 |  0.23 |
+| one   |   1 |  1.31 |
+| two   |   4 |  4.61 |
+| three |   9 |  9.05 |
+| four  |  16 | 16.55 |
+
+#+name: c-table
+#+header: :var d=somedata
+#+begin_src cpp :includes <cstdio> <cstdlib> :exports both
+for (int i=0; i<d_rows; i++) {
+    printf ("%s ", d[i][0]);
+    for (int j=1; j<d_cols; j++) {
+    const char* cell = d[i][j];
+    printf ("%5s %5g ", cell, 1000*atof(cell));
+    }
+    printf("\n");
+}
+#+end_src
+
+#+RESULTS: c-table
+| zero  |  0 |     0 |  0.23 |   230 |
+| one   |  1 |  1000 |  1.31 |  1310 |
+| two   |  4 |  4000 |  4.61 |  4610 |
+| three |  9 |  9000 |  9.05 |  9050 |
+| four  | 16 | 16000 | 16.55 | 16550 |
+
+* find median sorted arrays
+#+begin_src cpp
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+
+        int ns1 = nums1.size();
+        int ns1e = ns1 -1;
+
+        int ns2 = nums2.size();
+        int ns2e = ns2 -1;
+
+        int l = ns1 + ns2;
+        int lavg = l / 2;
+
+        int ns1h = ns1 / 2;
+        int ns1l = ns1 / 2 -1;
+
+        int ns2l = lavg - ns1h;
+        int ns2h = ns2l + 1;
+
+        int ans = 0;
+
+        if (ns1 == 0) {
+            return median(ns2);
+        }
+        if(ns2 == 0){
+            return median(ns1);
+        }
+        if(ns1 == 1 && ns2 == 1) {
+            return (nums1[0] + nums2[0]) / 2;
+        }
+        while(1) {
+            // Al <= Ah
+            // Bl <= Bh
+            /*
+            ,**  A xxxxxxAl|Ahxxxxx
+            ,**  B XXXXXBl|Bhxxxxx
+            ,*/
+            int Al = gV(nums1, ns1l);
+            int Bl = gV(nums2, ns2l);
+
+            int Ah = gV(nums1, ns1h);
+            int Bh = gV(nums2, ns2h);
+            //even
+            // left hands side have equal number than right hand side
+            if ((ns1 + ns2) % 2 == 0) {
+
+                if(Al <= Bh && Bl <= Ah) {
+                    return (max(Al,Bl) + min(Ah,Bh)) / 2;
+                }
+
+                if(Al > Bh) {
+                    ns1l--;
+                    ns1h--;
+                    ns2l++;
+                    ns2l++;
+                    continue;
+                }
+
+                if (Bl > Ah) {
+                    ns1l++;
+                    ns1h++;
+                    ns2l--;
+                    ns2h--;
+                    continue;
+                }
+            }
+        } else {
+            // odd
+            // left hands side have less number than right hand side
+            if(Al <= Bh && Bl <= Ah) {
+                return  min(Ah,Bh);
+            }
+
+            if(Al > Bh) {
+                ns1l--;
+                ns1h--;
+                ns2l++;
+                ns2l++;
+                continue;
+            }
+
+            if (Bl > Ah) {
+                ns1l++;
+                ns1h++;
+                ns2l--;
+                ns2h--;
+                continue;
+            }
+        }
+    }
+    static int median(int & l,int & h, int& size, vector<int>& nums) {
+        if (size == 0) {
+            return 0;
+        }
+        if (size == 1) {
+            return nums[0];
+        }
+        if (size % 2 == 0) {
+            return (nums[l] + nums[h]) / 2;
+        } else {
+            return nums[h];
+        }
+    }
+    static int gV(vector<int>& nums, int index) {
+        int size = nums.size();
+        if (index == -1) {
+            return INT_MIN;
+        }
+        else if (index == size -1) {
+            return INT_MAX;
+        }
+        return nums[index];
+    }
+#+end_src

@@ -1,0 +1,145 @@
+:PROPERTIES:
+:ID:       8049e8dd-0f23-4101-a4e4-8a9b640f8b92
+:END:
+#+title: Math
+#+date: [2021-11-20 Sat 16:11]
+
+* Algorithm Theory
+:PROPERTIES:
+:ID:       C19F0CC0-DFED-41B1-8DC5-6321A1A68466
+:END:
+** 算法导论
+*** Optimal binary tree
+In the range(i,j), if pick i as the root, then the left subtree will become
+(i,i-1) so have the dummy leaf di-1, so if pick j as the root, the right subtree
+become (j,j+1) have the dummy leaf dj.
+* Category theory
+:PROPERTIES:
+:ID:       0B7C51A7-D9F8-42C8-BE2B-8789D163C4A4
+:END:
+A category consists of objects and arrows that go between them.
+#+BEGIN_SRC haskell
+-- A function can never be called
+absurd :: Void -> a
+
+#+END_SRC
+** Basic
+Primitive : No property
+Abstraction
+=Composition=
+#+BEGIN_SRC plantuml :file Image/composition.png
+hidefootbox
+a -> b : f
+b -> c : g
+a -> c : f . g
+#+END_SRC
+
+#+RESULTS:
+[[file:Image/composition.png]]
+
+=Identity=
+f . id_a  = f
+id_a . f = f
+#+BEGIN_SRC plantuml :file Image/identity.png
+hidefootbox
+a -> a : id_a
+a -> b : f
+#+END_SRC
+
+#+RESULTS:
+[[file:Image/identity.png]]
+
+=Associativity=
+h . (g . f) = (h . g) . f
+#+BEGIN_SRC plantuml :file Image/Associativity.png
+hidefootbox
+a -> b : f
+b -> c : g
+c -> d : h
+a -> c : g . f
+b -> d : h . g
+a -> d : h.(g.f)=(h.g).h
+#+END_SRC
+
+#+RESULTS:
+[[file:Image/Associativity.png]]
+
+=Function= :  A mapping of values to values
+** Set
+Type are sets.
+In Set, objects are sets and morphisms (arrows) are functions.
+A set of morphisms between two objects in any category is called a hom-set.
+** _|_(Buttom)
+Unicode ⊥. This “value” corresponds to a non-terminating computation.
+#+BEGIN_SRC haskell
+f :: Bool -> Bool
+#+END_SRC
+Functions that may return bottom are called partial, as opposed to total functions, which return valid results for every possible argument.
+** Order
+preorder partial order
+A set of morphisms from object a to object b in a category C is called a
+hom-set and is written as C(a, b) (or, sometimes, HomC(a, b)). So every
+hom-set in a preorder is either empty or a singleton.
+** Monoid
+mappend maps an element of a monoid set to a function acting on that set
+A monoid is a single object category.
+** Category
+[2017-05-09 Tue 23:17]
+=Kleisli category=  a category based on a monad.
+any category C we can define the opposite category Cop just by reversing
+all the arrows.
+terminal object is the initial object in the opposite category.
+** Product
+A product of two objects a and b is the object c equipped with two projections
+such that for any other object c’ equipped with two projections there is a
+unique morphism m from c’ to c that factorizes those projections.
+** Asymmetry
+surjective +
+injective =
+bijection (isomorphism)
+** Kleisli category
+** Bifunctors
+C x D = E
+** Covariant and Contravariant Functors
+#+BEGIN_SRC haskell
+class Contravariant f where
+contramap :: (b -> a) -> (f a -> f b)
+
+#+END_SRC
+** Profunctors
+C ^ op x D = E
+** Initial Object
+The initial object is the object that has one and only one morphism going to any object in the category.
+** Yoneda lemma
+CPS
+higher order function to data type
+[C,Set] (C(a,-),F) =~ Fa
+** Represetable
+c(L1,-) = Rc
+Data type as the key to get value
+* Lambda Mathematics
+** Definitions
+Zero: λs.(λz.z)
+1 ≡ λsz.s(z)
+2 ≡ λsz.s(s(z))
+3 ≡ λsz.s(s(s(z)))
+S ≡ λwyx.y(wyx)
+
+*Multiplication*
+(λxyz.x(yz))
+
+*Conditionals*
+T ≡ λxy.x
+F ≡ λxy.y
+∧ ≡ λxy.xy(λuv.v) ≡ λxy.xyF
+∨ ≡ λxy.x(λuv.u)y ≡ λxy.xTy
+¬ ≡ λx.x(λuv.v)(λab.a) ≡ λx.xFT
+
+*conditional test*
+Z ≡ λx.xF¬F (zero predicate)
+* Linear algebra
+** Linear transformation
+Associative
+Use new base to represent the old
+A . B = C
+use column of A vector to represent the basis in B

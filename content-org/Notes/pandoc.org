@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       9a7946ad-2985-4064-8803-8662479b7d03
+:END:
+#+title: Pandoc
+#+date: [2021-11-20 Sat 16:14]
+
+* pandoc
+#+begin_src sh
+pandoc in.md --pdf-engine=lualatex \
+         -V 'mainfont:DejaVuSerif' \
+         -V 'sansfont:DejaVuSans' \
+         -V 'monofont:DejaVuSansMono' \
+         -V 'mathfont:TeXGyreDejaVuMath-Regular' \
+         -o out.pdf
+#+end_src

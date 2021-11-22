@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       7078bf34-9571-4f36-9dfb-ac8b64129085
+:END:
+#+title: Clojure
+#+date: [2021-12-15 Wed 22:09]
+
+Shell and aot is eager.
+
+* if map not working try mapv
++ ~map~ return a lazy sequence,
++ ~mapv~ return a sequence.
+
+* asynchronism
+
+|              | Coordinated | Uncoordinated |
+|--------------+-------------+---------------|
+| Synchronous  | Refs        | Atoms         |
+| asynchronous | -           | Agents        |

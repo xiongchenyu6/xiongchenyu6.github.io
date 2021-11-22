@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       daf3cabf-4e54-4084-b677-18e6d0364428
+:END:
+#+title: combinators
+#+date: [2021-12-20 Mon 01:14]
+
+组合子编程
+
+immutable
+
+thread
+串行逻辑，无需变量名字
+-->
+cond-->
+some-->
+
+
+S x y z = x z (y z)
+
+asynchronism
+
+call/cc

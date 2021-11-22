@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       5f8fce81-af34-4ce0-971c-8eae281bf7e7
+:END:
+#+title: ElasticSearch
+#+date: [2021-11-20 Sat 16:08]
+
+* Indices
+localhost:9200/_cat/indices?v

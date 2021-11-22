@@ -1,0 +1,79 @@
+:PROPERTIES:
+:ID:       a581dc7f-4efc-4f46-8226-a5b34a9fd223
+:END:
+#+title: Data Structure
+#+date: [2021-11-20 Sat 16:26]
+
+* stack
+* queue
+* array
+** dynamic array
+#+begin_src cpp :includes <vector> :namespace std
+vector<int> v{0, 1, 2, 3, 4, 5, 6};
+
+for (auto it = v.begin(), e = v.end(); it != e; ++it) {
+    const int x = *it;
+    cout << x << "," << v.capacity() << endl;
+    v.push_back(x);
+}
+#+end_src
+
+#+RESULTS:
+
+* list
+** reverse list
+#+begin_src cpp
+// a -> b  -> c
+Node* a = new Node{1};
+Node* b = new Node{2};
+Node* c = new Node{3};
+a->next = b;
+b->next = c;
+
+auto pre = a;
+auto cur = a->next;
+Node* tmp;
+while (cur != nullptr) {
+    tmp = cur->next;
+    cur->next = pre;
+    pre = cur;
+    cur = tmp;
+}
+a->next = nullptr;
+while (c != nullptr) {
+    cout << c->val << endl;
+    c = c->next;
+}
+#+end_src
+
+* heap
+** min heap
+#+begin_src cpp :includes <queue> <vector> <iostream>
+using namespace std;
+priority_queue<int, vector<int>, greater<int> > a;
+a.push(1);
+a.push(2);
+a.push(3);
+cout << a.top() << endl;
+#+end_src
+
+#+RESULTS:
+: 1
+* tree map
+#+begin_src cpp :includes <map> :flags -std=c++20 :namespaces std
+map<int, int> m;
+m.emplace(1, 23);
+#+end_src
+
+#+RESULTS:
+
+* hash map
+
+#+begin_src cpp :includes <unordered_map> <iostream> :flags -std=c++20 :namespaces std
+unordered_map<int, int> hash_map;
+hash_map.emplace(1, 23);
+cout << hash_map[1] << endl;
+#+end_src
+
+#+RESULTS:
+: 23

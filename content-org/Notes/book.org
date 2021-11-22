@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       5cacc3fd-1860-4aeb-a509-25848bd99829
+:END:
+#+title: Book
+#+date: [2021-11-20 Sat 16:55]
+* [[id:0c96be52-62a0-482d-a59a-763d67e69120][Programming]]
+:PROPERTIES:
+:ID: 06E076AE-F9BF-4BE2-8364-ECAF83B0E1D9
+:END:
+** DONE [[http://learnyouahaskell.com/chapters][Learn Your Haskell A Great Good ]]
+CLOSED: [2017-05-04 Thu 10:33]
+** DONE Introduction to algorithms
+CLOSED: [2017-07-28 Fri 08:30]
+- State "DONE"       from "HOLD"       [2017-07-28 Fri 08:30]
+- State "HOLD"       from "TODO"       [2017-05-04 Thu 13:12]
+Stop at black and red tree
+** DONE Computer System (A Programmer Perspective)
+CLOSED: [2017-07-28 Fri 08:30]
+- State "DONE"       from "WAITING"    [2016-07-28 Fri 08:30]
+- State "WAITING"    from "TODO"       [2017-05-04 Thu 10:33]
+
+* Hobby
+:PROPERTIES:
+:ID: 7A9942E8-3593-4D9D-ADB9-D7A0E41880F6
+:END:
+** HOLD 易经
+:LOGBOOK:
+CLOCK: [2020-10-23 Fri 22:04]--[2020-10-23 Fri 22:10] =>  0:06
+:END:

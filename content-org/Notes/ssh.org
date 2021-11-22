@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       4d4fddd8-0a53-4d5c-aeef-9aaad990b0bc
+:ROAM_REFS: https://blog.csdn.net/wxqee/article/details/49234595
+:END:
+#+title: SSH
+
+* how to gen key
+#+begin_src sh1
+ssh-keygen -t rsa -b 4096
+ssh-keygen -t dsa 
+ssh-keygen -t ecdsa -b 521
+ssh-keygen -t ed25519
+#+end_src
+* how to copy key to remote
+#+begin_src emacs-lisp
+ssh-copy-id -i ~/.ssh/tatu-key-ecdsa user@host
+#+end_src
+
+隧道
+
+get public key from private key
+,#+begin_src sh
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG4aMEni1mj+nTjregYWUMSADfjFBHiCNhxLiEt2s9+5 NixOps VPN key of bttc
+#+end_src

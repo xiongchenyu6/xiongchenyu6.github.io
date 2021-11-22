@@ -1,0 +1,68 @@
+:PROPERTIES:
+:ID:       939534a7-44b5-4b0f-8f1f-f8e6dacd01f7
+:END:
+#+title: Asm
+#+date: [2021-11-20 Sat 13:19]
+
+#+begin_src sh
+clang++ -S -O3 -march=haswell -mllvm --x86-asm-syntax=intel
+#+end_src
+
+Set zero flag from value
+#+begin_src asm
+test ri ri
+#+end_src
+* Parameter
+The parameter will be put in stack and the first value is the count of the
+args and the second args is the program name.
+
+~ax~ accumulator register
+~bx~ base register
+~cx~ counter register
+~dx~ data register
+
+~bp~ - register base pointer (start of stack)
+~sp~ - register stack pointer (current location in stack, growing downwards)
+~si~ - register source index (source for data copies)
+~di~ - register destination index (destination for data copies)
+
+~r8~  - register 8
+~r9~  - register 9
+~r10~ - register 10
+~r11~ - register 11
+~r12~ - register 12
+~r13~ - register 13
+~r14~ - register 14
+~r15~ - register 15
+
+64-bit registers using the 'r' prefix: rax, r15
+32-bit registers using the 'e' prefix (original registers: e_x) or 'd' suffix (added registers: r__d): eax, r15d (double word)
+16-bit eegisters using no prefix (original registers: _x) or a 'w' suffix (added registers: r__w): ax, r15w
+8-bit registers using 'h' ("high byte" of 16 bits) suffix (original registers - bits 8-15: _h): ah, bh
+8-bit registers using 'l' ("low byte" of 16 bits) suffix (original registers - bits 0-7: _l) or 'b' suffix (added registers: r__b): al, bl, r15b
+
+*rdi* - first argument
+*rsi* - second argument
+*rdx* - third argument
+*rcx* - fourth argument
+*r8* - fifth argument
+*r9* - sixth
+* system call
+First six arguments are in rdi, rsi, rdx, rcx, r8d, r9d; remaining arguments are on the stack.
+For syscalls, the syscall number is in rax.
+Return value is in rax.
+The called routine is expected to preserve rsp,rbp, rbx, r12, r13, r14, and r15 but may trample any other registers.
+
+* EFLAGS(program status and control) register
++ ~carry flag~ is set when there is a carry out Of the most-significant bit.
++ ~overflow flag~ is set when there is a carry into the most significant bit.
++ ~Parity flag~ least-significant byte)包含偶数个 1 位则该位置 1，否则清零
++ ~Adjust flag~ 如果算术操作在结果的第 3 位发生进位或借位则将该标志置 1，否则清零。这个标志在 BCD(binary-code decimal)算术运算中被使用
++ ~zero flag~
++ ~sign flag~
+
+
+* 看内存
+内存地址格式为： 0x4bdc(%rip), 一般是全局变量，全局区（数据段）
+内存地址格式为：-0x78(%rbp), 一般是局部变量，栈空间
+内存地址格式为：0x10(%rax), 一般是堆空间

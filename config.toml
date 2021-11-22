@@ -162,7 +162,7 @@ enableEmoji = true
     # KaTeX mathematical formulas config (KaTeX https://katex.org/)
     # KaTeX 数学公式配置 (KaTeX https://katex.org/)
     [params.page.math]
-      enable = false
+      enable = true
       # default block delimiter is $$ ... $$ and \\[ ... \\]
       # 默认块定界符是 $$ ... $$ 和 \\[ ... \\]
       blockLeftDelimiter = ""
@@ -488,7 +488,7 @@ enableEmoji = true
         GitHub = "xiongchenyu6"
         Linkedin = "chenyu-xiong"
         Twitter = "xiongchenyu"
-        Instagram = "xiongchenyu"
+        Instagram = "xiongchenyu6"
         Facebook = "chenyu.xiong.9"
         Email = "xiongchenyu6@gmail.com"
         RSS = true
@@ -607,5 +607,13 @@ enableEmoji = true
     post = ""
     name = "分类"
     url = "/categories/"
+    title = ""
+    weight = 3
+  [[menu.main]]
+    identifier = "resume"
+    pre = ""
+    post = ""
+    name = "简历"
+    url = "/resume/"
     title = ""
     weight = 3

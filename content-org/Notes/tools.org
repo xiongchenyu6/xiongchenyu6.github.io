@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       f5ff4916-857c-4394-ace4-5b0619ade6fc
+:END:
+#+title: Tools
+#+date: [2021-11-20 Sat 12:19]
+Tools refer to some console software
+
+* [[id:239948a8-47af-412f-95fb-8374c5670ad5][Compress]]
+- [[id:c89b6510-421c-4cfb-b615-b70268ca0537][tar]]
+- [[id:b32a8629-f3a5-43d2-8fcf-e62ab1f5e755][Gzip]]
+* Gnu
+- [[id:878a665b-adad-4c8f-83b4-eefd7164236a][Git]]
+- [[id:a63d52fa-8d80-478a-9c96-d2bcf66fefca][GNUPG]]
+- [[id:22005da3-c5af-4c8d-8d22-eb05becd4733][Cmake]]
+- [[id:5f8fce81-af34-4ce0-971c-8eae281bf7e7][ElasticSearch]]
+
+[[id:9a7946ad-2985-4064-8803-8662479b7d03][Pandoc]]

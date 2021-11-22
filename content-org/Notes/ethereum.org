@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       804AEB5F-AFEF-4BEF-B3D7-E02D43712FFA
+:END:
+#+title: ethereum
+#+date: [2022-07-30 Sat 17:05]
+
+* Accout

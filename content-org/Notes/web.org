@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       473c9ad6-fc14-40e0-a3c6-b35fb1256391
+:END:
+#+title: Web
+#+date: [2021-11-20 Sat 16:21]
+* Broser
+** Chrome Safety disable
++ *Mac*
+#+BEGIN_SRC shell
+open -a Google\ Chrome --args --disable-web-security --user-data-dir
+#+END_SRC
++ *Linux*
+#+BEGIN_SRC shell
+chromium --args --disable-web-security --user-data-dir &
+#+END_SRC
+* Safety
+** CRSF
+- Double submit
+  save both token and refresh token in the cookie and localstorage, and submit
+  it with them both.
+** CORS
+- Have to be https
+- Have to set the Allow ... Header
+- Have OPTIONS operator sniffing

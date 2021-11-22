@@ -1,0 +1,245 @@
+:PROPERTIES:
+:ID:       5991a852-e617-4b28-83fc-543c10dd73ab
+:END:
+#+title: Emacs
+#+date: [2021-11-21 Sun 22:23]
+
+* basic syntax                                                     
+** list
+To buy:
+1. Milk
+2. Eggs
+   - Organic
+3. Cheese
+   + Parmesan
+   + Mozarella
+** inline sytle
+#+begin_src org
+*bold*
+/italic/
+_underline_
+=verbatim=
+~code~
++strike-through+
+#+end_src
+*bold*
+/italic/
+_underline_
+=verbatim=
+~code~
++strike-through+
+
+* keybinds
+- change depth ~C-n S(shift)-tab~
+* Agenda
+- change todo status ~C-c C-t~
+- change priority ~C-c ,~
+- change deadline ~C-c C-d~
+- change scheduled ~C-c C-s~
+- change tags ~C-c C-c~
+- clock in ~C-c C-x C-i~
+- clock out ~C-c C-x C-o~
+- toggle inline image ~C-c C-x C-v~
+* Dired
+- open dired ~C-x d~
+- change to wdired mode (to edit as plain txt) ~C-x C-q~
+  
+* How to encrypt password
+To use [[id:a63d52fa-8d80-478a-9c96-d2bcf66fefca][GNUPG]] to encrypt the password.
+Encrypt plain text contain password : gpg --recipient xiongchenyu6 --encrypt test
+Decrypt test.org to password without parenthes : echo yourPassword | gpg --passphrase-fd 0 -q --for-your-eyes-only --no-tty -d ~/.password/test.gpg
+* Mu4e index bug
+#+BEGIN_SRC shell
+mu init --maildir=~/Maildir --my-address=xiongchenyu6@gmail.com
+mu index
+#+END_SRC
+
+* Org
+:PROPERTIES:
+:ID:       AF138CE6-A10F-42CC-B381-EA6C195647EE
+:END:
+** Org-babel
+*** Plot in [[id:4c0500c4-59b2-4a3e-b0dc-c16c5c6d5b24][Python]]
+exports can be [ code| results| both| none] choose the one you need.
+
+Example :
+#+begin_src python :exports both :results file
+# Comment to keep indentation
+import pylab as pl
+from numpy import sin, pi, linspace
+t = linspace(0, 2*pi, 1000)
+pl.plot(t, sin(t))
+pic = 'Image/myfig.png'
+pl.savefig(pic)
+return pic
+#+end_src
+
+#+RESULTS:
+[[file:Image/myfig.png]]
+
+
+#+BEGIN_SRC plantuml :exports both :file Image/activate.png
+title Example Sequence Diagram
+activate Client
+Client -> Server: Session Initiation
+note right: Client requests new session
+activate Server
+Client <-- Server: Authorization Request
+note left: Server requires authentication
+Client -> Server: Authorization Response
+note right: Client provides authentication details
+Server --> Client: Session Token
+note left: Session established
+deactivate Server
+Client -> Client: Saves token
+deactivate Client
+#+END_SRC
+
+#+RESULTS:
+[[file:Image/activate.png]]
+
+
+#+BEGIN_SRC ditaa :exports both :file Image/ac.png
+
+        |         |                  +------------------------+
+        |         |                  | cBLU                   |
+        |         |                  | food market            |
+        |         |                  +                        +
+        |         |                  |                        |
+        |         |                  |                        |
+        |         |                  +                        +
+        |         |                  |       +----+           |
+        |         |                  |       |gate|        {d}|
+        |         |                  +----+--+----+-----------+   每天回家路线
+        |  Road   |    +------------------------------------------------------------+
+        |         |    | +-------------------------------------------------------+  |  +------------------------+
+        |         |    | | cBLU                                                  |  |  | cBLU                   |
+        |         |    | | primary school                                        |  |  | Gov. Staff Residence   |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+ +--+ +--+    |
+        |         |    | |                              |  | |  | |  | |  |      |  |  | |  | |  | |  | |  |    |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+ +--+ +--+    |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+ +--+ +--+    |
+        |         |    | |                              |  | |  | |  | |  |      |  |  | |  | |  | |  | |  |    |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+ +--+ +--+    |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+ +--+ +--+    |
+        |         |    | |                              |  | |  | |  | |  |      |  |  | |  | |  | |  | |  |    |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+ +--+ +--+    |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+ +--+ +--+    |
+        |         |    | |                              |  | |  | |  | |  |      |  |  | |  | |  | |  | |  |    |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+ +--+ +--+    |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+ /----\ +--+  |
+        |         |    | |                              |  | |  | |  | |  |      |  |  | |  | |  |>|cRED| |  |  |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+|\----/ +--+  |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+|+--+ +--+    |
+        |         |    | |                              |  | |  | |  | |  |      |  |  | |  | |  |||  | |  |    |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+|+--+ +--+    |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+|+--+ +--+    |
+        |         |    | |                              |  | |  | |  | |  |      |  |  | |  | |  |||  | |  |    |
+        |         |    | |                              +--+ +--+ +--+ +--+      |  |  | +--+ +--+|+--+ +--+    |
+        |         |    | +----+                                             +----+  |  +----+     |        +----+
+        |         |    +-|cPNK|                                             |cPNK|  +->|cPNK|-----+        |cPNK|
+        |         |      |gate|                                             |gate|     |gate|              |gate|
+        |         |      +----+                                             +----+     +----+              +----+
+        |         |      |                                                       |     | +--+ +--+ +--+ +--+    |
+        |         |      |                                                       |     | |  | |  | |  | |  |    |
+        |         |      |                                                       |     | +--+ +--+ +--+ +--+    |
+        |         |      |                                                       |     | +--+ +--+ +--+ +--+    |
+        |         |      |                                                       |     | |  | |  | |  | |  |    |
+        |         |      |                                                       |     | +--+ +--+ +--+ +--+    |
+        |         |      |                                                       |     | +--+ +--+ +--+ +--+    |
+        |         |      |                                                       |     | |  | |  | |  | |  |    |
+        |         |      |   /-----------------------------\                     |     | +--+ +--+ +--+ +--+    |
+        |         |      |   |                             |                     |     | +--+ +--+ +--+ +--+    |
+        |         |      |   |                             |                     |     | |  | |  | |  | |  |    |
+        |         |      |   |   c1AB                      |                     |     | +--+ +--+ +--+ +--+    |
+        |         |      |   |                             |                     |     | +--+ +--+ +--+ +--+    |
+        |         |      |   |  PlayGround                 |                     |     | |  | |  | |  | |  |    |
+        |         |      |   |                             |                     |     | +--+ +--+ +--+ +--+    |
+        |         |      |   |                             |   +----+            |     | +--+ +--+ +--+ +--+    |
+        |         |      |   |                             |   |cRED|            |     | |  | |  | |  | |  |    |
+        |         |      |   |                             |   |flag|            |     | +--+ +--+ +--+ +--+    |
+        |         |      |   |                             |   |    |            |     | +--+ +--+ +--+ +--+    |
+        |         |      |   |                             |   +----+            |     | |  | |  | |  | |  |    |
+        |         |      |   |                             |                     |     | +--+ +--+ +--+ +--+    |
+        |         |      |   |                             |                     |     | +--+ +--+ +--+ +--+    |
+        |         |      |   |                             |                     |     | |  | |  | |  | |  |    |
+        |         |      |   |                             |                     |     | +--+ +--+ +--+ +--+    |
+        |         |      |   |                             |                     |     | +--+ +--+ +--+ +--+    |
+        |         |      |   |                             |                     |     | |  | |  | |  | |  |    |
+        |         |      |   |                             |                     |     | +--+ +--+ +--+ +--+    |
+        |         |      |   \-----------------------------/                     |     | +--+ +--+ +--+ +--+    |
+        |         |      |                                                       |     | |  | |  | |  | |  |    |
+        |         |      |                                                       |     | +--+ +--+ +--+ +--+    |
+        |         |      |                                                       |     | +--+ +--+ +--+ +--+    |
+        |         |      |                                                       |     | |  | |  | |  | |  |    |
+        |         |      |                                                       |     | +--+ +--+ +--+ +--+    |
+        |         |      +----+--------------------------------------------------+     +----+-------------------+
+#+END_SRC
+
+#+RESULTS:
+[[file:Image/ac.png]]
+
+*** Skewer
+Run [[id:67b2cf85-11fa-4d49-a1b0-c42f8a7cd05c][JavaScript]] code beflow to connect to broswer
+#+BEGIN_SRC js
+javascript:(function(){var d=document;var s=d.createElement('script');s.src='http://localhost:8080/skewer';d.body.appendChild(s);})()
+#+END_SRC
+
+#+RESULTS:
+
+*** Org-babel bug
+remove all *.elc files inside org folder
+** Org cheat sheet
+*bold*
+/italic/
+_underline_
+=verbatim=
+~code~
++strike-through+
+** Org protocal
+*** Mac setup
+1. Create app
+    #+begin_src script editor :file /Applications/OrgProtocolClient.app :type Application
+    on open location this_URL
+        set EC to "/usr/local/bin/emacsclient --no-wait "
+        set filePath to quoted form of this_URL
+        do shell script EC & filePath
+        tell application "Emacs" to activate
+    end open location
+    #+end_src
+2. Add to last dict item
+    #+begin_src plist :file /Applications/OrgProtocolClient.app/Contents/Info.plist
+    <key>CFBundleURLTypes</key>
+    <array>
+    <dict>
+        <key>CFBundleURLName</key>
+        <string>org-protocol handler</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+        <string>org-protocol</string>
+        </array>
+    </dict>
+    </array>
+    #+end_src
+3. Register handler
+    #+begin_src sh
+    /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -R  -f /Applications/OrgProtocolClient.app
+    #+end_src
+4. Test
+    #+begin_src
+    open org-protocol://roam-ref\?template=r\&ref=test\&title=this
+    #+end_src
+
+*** Chrome setup
+javascript:location.href =
+    'org-protocol://roam-ref?template=r&ref='
+    + encodeURIComponent(location.href)
+    + '&title='
+    + encodeURIComponent(document.title)
+    + '&body='
+    + encodeURIComponent(window.getSelection())
+* Emacs Plugins
+- Ace
+  *gs*
+* Complete file path
+/C-x C-f/

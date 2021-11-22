@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       98cde67a-2e12-42c8-ad22-23382b3371ed
+:END:
+#+title: Exercise
+#+date: [2021-11-20 Sat 16:58]
+
+* self :ATTACH:
+| datetime         | weight | neck | waistline |  arm | exercise                                                                                           |
+|------------------+--------+------+-----------+------+----------------------------------------------------------------------------------------------------|
+| <2021-07-22 Thu> |  77.35 |   42 |        89 |   31 | half-push up: 10 times;                                                                            |
+| <2021-07-27 Tue> |  75.90 |   41 |        89 |   30 | body bridge: 1 min;                                                                                |
+| <2021-07-28 Wed> |  75.85 |   41 |        89 |   30 | body bridge : 8:30 min; knee-push up: 63 times; push up: 5 times                                   |
+| <2021-07-29 Thu> |  75.90 | 40.5 |        90 | 30.5 | body bridge : 5:30 min; knee-push up: 15 times; push up: 21 times ; half-push diamond up: 11 times |
+| <2021-07-30 Fri> |  75.50 | 39.5 |      88.5 | 30.5 | body bridge : 3:30 min; knee-push up: 0 times; push up: 0 times ; half-push diamond up: 0 times    |

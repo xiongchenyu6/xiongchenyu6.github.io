@@ -1,0 +1,144 @@
+# CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+#+CVSTYLE: banking
+# CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+#+CVCOLOR: green
+
+#+TITLE: Software Engineer
+#+AUTHOR: XiongChenYu
+#+hugo_custom_front_matter: :author "Xiong ChenYu"
+#+email: xiongchenyu6@gmail.com
+
+#+ADDRESS: Singapore
+#+MOBILE: (+65) 92401051
+#+HOMEPAGE: xiongchenyu6.github.io
+#+GITHUB: xiongchenyu6
+#+LINKEDIN: chenyu-xiong
+* Employment
+
+** Software Engineer
+:PROPERTIS:
+:CV_ENV: cventry
+:FROM: <2019-02-14>
+:TO:   <2020-04-12>
+:LOCATION: Singapore
+:EMPLOYER: Bigo
+:END:
++ Develop online recommendation infrastructure and performance optimization tricks use C++.
++ Design and implement the base nearline infrastructure user event tracking aggregation system use Flink for multiple product lines.
++ Design and Build an internal streaming process framework extension focus on Id, Session Features and Forward Index based on Flink wrote in scala use shapeless for generics and scala macro for performance.
++ Establish monitor system for recommendation system use prometheus promgen
+filebeat elasticsearch kibana grafana
+
+** Full stack Engineer
+:PROPERTIES:
+:CV_ENV: cventry
+:FROM: <2018-09-01>
+:TO:   <2019-01-30>
+:LOCATION: Singapore
+:EMPLOYER: Bitmain
+:END:
++ Develop miniapp management system for Chatchat backend and frontend
++ Develop Memo (twitter on blockchain) backend use graphql and neo4j
++ Develop a bchsv separation miniapp to split bchabc and bchsv
++ Develop Devops stack use nixops and hydra for my projects
+
+** Software Engineer
+:PROPERTIES:
+:CV_ENV: cventry
+:FROM: <2018-02-01>
+:TO:   <2018-08-31>
+:LOCATION: Singapore
+:EMPLOYER: LeadIQ
+:END:
++ Build reward system frontend and backend for users who contribute the data.
++ Use blockchain as the database with versioning and audit history.
++ Build a hyperledger based service to share data with partners.
++ Data parsing, web scraping and Cluster Data processing use spark.
++ Enrich the voter information for bidding to split California into 3 states.
+* Education
+** Bachelor of Engineer
+:PROPERTIES:
+:CV_ENV: cventry
+:FROM: <2015-08-01>
+:TO:   <2018-06-31>
+:LOCATION: Singapore
+:EMPLOYER: Nanyang Technological University
+:END:
+Major in Electrical and Electronic Engineer Specialization in Info-communication
+** Nanyang Polytechnic
+:PROPERTIES:
+:CV_ENV: cventry
+:FROM: <2013-04-01>
+:TO:   <2015-06-31>
+:LOCATION: Singapore
+:EMPLOYER: Nanyang Polytechnic
+:END:
+Major in Electronic Computer & Communication Engineering Specialization in Embedded-System
+
+* School Projects
+** Final year project
+:PROPERTIES:
+:CV_ENV: cventry
+:FROM: <2017-08-01>
+:TO:   <2018-06-31>
+:LOCATION: Singapore
+:EMPLOYER: Nanyang Technological University
+:END:
+Homepage: https://github.com/xiongchenyu6/Final-Year-Project
+Officail WebSite: http://www.xiaopodao.com/
++ Develop a web-based management system for international delivery sharing and market analysis enhanced with machine learning
++ Build a web management system to fit fight group to deliver, track, and notify the receiver.
++ Use data collected above to analyzing the marketing with the modern data mining and ai technology.
++ 1000+ Register Users in NTU
++ 30000+ Packages send to Singapore
+** Design & Innovation Project (DIP)
+:PROPERTIES:
+:CV_ENV: cventry
+:FROM: <2016-01-01>
+:TO:   <2016-05-31>
+:LOCATION: Singapore
+:EMPLOYER: Nanyang Technological University
+:END:
+homepage: https://github.com/xiongchenyu6/dip_project_for_obd
++ head up display projection for car
++ use raspberry pi to collect the data from obd by python.
++ use nodejs to build a light weight server.and process the obd info with google direction.
++ create the website to display the data.
++ win the best demo
+** Final year project
+:PROPERTIES:
+:CV_ENV: cventry
+:FROM: <2014-06-01>
+:TO:   <2014-08-31>
+:LOCATION: Singapore
+:EMPLOYER: Nanyang Polytechnic
+:END:
+Homepage: https://github.com/xiongchenyu6/NYP-FPY
++ Smart House Sharing
++ Use Arduino to control the house model and collect sensors data
++ Design and build a Android app for user to login and authorization
++ Use NFC to unlock the house door
+* Programming Skills
+#+ATTR_HTML: :frame void
+#+ATTR_LATEX: :environment tabular :align lp{0.85\textwidth}
+| Type                   | Lang                                            |
+|------------------------+-------------------------------------------------|
+| Declarative            | Html5(pug) Css(less,sass)                       |
+| Procedure              | C C++ Python(Django) Nodejs(Express Meteor)     |
+| Functional             | Haskell Scala(Scalaz, Shapeless) Elisp          |
+| Object-oriented        | Java(Play, Android) C#(Asp.net)                 |
+| Js Sub-Languages       | Js(Es6) Typescript Coffeescript ScalaJs         |
+| Concurrent Programming | Scala(Akka) Haskell(stm) clojure(Channel)       |
+| Front-end framework    | Reflex Halogen Anguler React Ramda              |
+| Front-end Style        | Bootstrap 3&4 Materil UI Antd                   |
+| Front-end Module       | Webpack Parcel Jest                             |
+| Full-stack framework   | Ionic3 React Native Electron                    |
+| System                 | Nixos Linux(zshell tmux vim emacs) Docker Mac   |
+| IOT                    | Raspberry Pi Arduino DSP                        |
+| Database               | Mysql Mongodb Firebase Hyperledger Fabric       |
+| Documentation          | Latex Markdown Gitbook Org Mode                 |
+| Devops                 | Aws Nix Nixos Nixops hydra k8s docker           |
+| Testing                | CI/CD + Spec + Property Test                    |
+| Big Data               | Flink Spark Hadoop Yarn Kafka AirFlow           |
+| Rpc                    | brpc grpc                                       |
+| Monitor                | promethues filebeat logstash kibana open falcon |

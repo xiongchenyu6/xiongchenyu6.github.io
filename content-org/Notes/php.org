@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       53eef633-0f97-4715-8825-221a49c6fd9a
+:END:
+#+title: Php
+#+date: [2021-11-20 Sat 13:27]
+
+* Php

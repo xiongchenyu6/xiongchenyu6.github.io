@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       451229bb-df97-4aea-bc53-337a15996136
+:END:
+#+title: mysql
+#+date: [2022-10-20 Thu 14:33]
+
+#+begin_src sql
+
+CREATE USER 'gitea'@'%' IDENTIFIED BY 'gitea';
+
+GRANT ALL PRIVILEGES ON *.* TO 'gitea'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'user1'@localhost IDENTIFIED BY 'password1';
+GRANT ALL PRIVILEGES ON 'yourDB'.* TO 'user1'@localhost;
+#+end_src

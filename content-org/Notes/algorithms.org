@@ -1,0 +1,269 @@
+:PROPERTIES:
+:ID:       f5adc1e4-eae4-4e3b-978d-96d13d0ae578
+:END:
+#+title: Algorithms
+#+date: [2021-11-20 Sat 16:27]
+* Dynamic Programming
+1) Overlapping Subproblems
+    a) Memoization (Top Down)
+    The memoized program for a problem is similar to the recursive version with a small modification that looks into a lookup table before computing solutions.
+    b) Tabulation (Bottom Up)
+    The tabulated program for a given problem builds a table in bottom-up fashion and returns the last entry from the table.
+2) Optimal Substructure
+A given problems has Optimal Substructure Property if optimal solution of the given problem can be obtained by using optimal solutions of its subproblems.
+** Fib
+#+begin_src cpp :namespaces std :flags  -std=c++20 :includes <iostream> <vector>
+/*
+  f(i)   f(i -1)   f(i-1) f(i-2)   1 1
+  f(i-1) f(i-2) =  f(i-2) f(i-3) * 1 0
+,*/
+
+/*
+,** f(1) f(0)    | 1 1 | ^ (n - 1)
+,** f(0) f(-1) * | 1 0 |
+,**
+ ,*/
+
+/*
+,**  x00 x01   y00 y01   x00 * y00 + x01 * y10  x00 * y01 + x01 * y11
+,**  x10 x11 * y10 y11 = x10 * y00 + x11 * y10  x10 * y01 + x11 * y11
+,**
+ ,*/
+
+vector<vector<int>> m_mul(vector<vector<int>> a, vector<vector<int>> b) {
+    vector<vector<int>> ret(2, vector<int>(2));
+    auto x00 = a[0][0];
+    auto x01 = a[0][1];
+    auto x10 = a[1][0];
+    auto x11 = a[1][1];
+    auto y00 = b[0][0];
+    auto y01 = b[0][1];
+    auto y10 = b[1][0];
+    auto y11 = b[1][1];
+    ret[0][0] = x00 * y00 + x01 * y10;
+    ret[0][1] = x00 * y01 + x01 * y11;
+    ret[1][0] = x10 * y00 + x11 * y10;
+    ret[1][1] = x10 * y01 + x11 * y11;
+    return ret;
+}
+
+vector<vector<int>> loop(vector<vector<int>> init, int n,
+                         vector<vector<int>> acc) {
+    // 43 = 1 + 2  +8 + 32
+    // 43 = 2^0 + 2^1  + 2^3 + 2^5
+    auto lsm = n & 0x1;
+    if (lsm == 1) { acc = m_mul(init, acc); }
+    init = m_mul(init, init);
+    n = n >> 1;
+    if (n > 0) { return loop(init, n, acc); }
+    return acc;
+}
+
+int main() {
+    int n = 7;
+    vector<vector<int>> i{vector<int>{1, 0}, vector<int>{0, 1}};
+    vector<vector<int>> t{vector<int>{1, 1}, vector<int>{1, 0}};
+    auto ans = loop(t, n - 1, i);
+    cout << ans[0][0] << endl;
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+: 13
+
+** longest common string
+贪心+动态规划
+#+begin_src cpp :namespaces std :flag  -std=c++20 :includes <iostream> <vector>
+string X = "ABCBDAB";
+string Y = "BDCABA";
+auto m = X.size();
+auto n = Y.size();
+
+vector<vector<int> > table(m + 1, vector<int>(n + 1));
+
+for (int i = 0; i < m + 1; ++i) {
+    for (int j = 0; j < n + 1; ++j) {
+        // 第一行和第一列置0
+        // cout << "i, j :" << i << " " << j << endl;
+        if (i == 0 || j == 0)
+            table[i][j] = 0;
+
+        else if (X[i - 1] == Y[j - 1])
+            table[i][j] = table[i - 1][j - 1] + 1;
+
+        else
+            table[i][j] = max(table[i - 1][j], table[i][j - 1]);
+    }
+}
+
+cout << table[m][n] << endl;
+auto index = table[m][n];
+auto lcs_str = vector<char>(index);
+auto i = m;
+auto j = n;
+while(index >= 0){
+    if(X[i] == X[j]) {
+       lcs_str[index - 1] = X[i];
+       --i;
+       --j;
+       --index;
+    } else {
+        if (table[i-1][j] >= table[i][j-1]) {
+            --i;
+        } else {
+            --j;
+        }
+    }
+}
+std::string s(lcs_str.begin(), lcs_str.end());
+cout << s << endl;
+#+end_src
+
+#+RESULTS:
+|    4 |
+| BDAB |
+
+* number
++ number maximum length
+* Cellular Automata
+** Grid of cells
+** Cell - state -neibourhood
+** cell state = f(neibourhood state_(t-1))
+* String pattern matching
+** single pattern
+- KMP
+#+begin_src cpp :namespaces std :flags  -std=c++20 :includes <iostream> <vector> :main no
+vector<int> kmp_build(string s) {
+    const int size = s.size();
+    vector<int> next{0, 0};
+    int i = 1, j = 0;
+    // FFDHFJDSFJ     i
+    //  FFDHFJDSFJ    j
+    while (i < size) {
+        while (s[i] != s[j] && j != 0) j = next[j];
+        if (s[i] == s[j]) j++;
+        next.emplace_back(j);
+        i++;
+    }
+    return next;
+}
+
+vector<int> search_kmp(string s, string pattern) {
+    vector<int> lei;
+    auto next = kmp_build(pattern);
+    int j = 0;
+    for (int i = 0; i < s.size(); ++i) {
+        // 当判断成功 或者 某一位判断失败且pattern匹配不为初始值的时候
+        while (j == (pattern.size()) || (s[i] != pattern[j] && j != 0))
+            j = next[j];
+        if (s[i] == pattern[j]) ++j;
+        if (j == pattern.size()) lei.emplace_back(i);
+    }
+    return lei;
+}
+
+auto main(int argc, char* args[]) -> int {
+    auto end_indexs = search_kmp("abccabcabcdd", "abc");
+    for(auto end_index : end_indexs) {
+        cout << end_index << endl;
+    }
+    return 0;
+}
+#+end_src
+
+  #+RESULTS:
+  | 2 |
+  | 6 |
+  | 9 |
+
+- Robin Karp
+- Finite automata
+  状态迁移
+  lps 去看上一个匹配失败（匹配失败跳转到 lps），然后固定当前 pattern，就是新的 lps
+
+** multiple pattern
+- ac automata
+
+* Knuth 洗牌算法
+#+begin_src cpp :namespaces std :flags  -std=c++20 :includes <iostream>
+for (int i = vec.size() - 1; i >= 0; i--) {
+    swap(vec[i], vec[rand() % (i + 1)]);
+}
+#+end_src
+
+* 取整
+n & (-32) 按照 32 取整 32 & -32 = 32
+* heap
+** find k th largest number
+#+begin_src cpp :namespaces std :flags  -std=c++20 :includes <iostream> <vector> <queue> :main no
+int order_statistics(std::vector<int> a, unsigned k) {
+    priority_queue<int> q;
+
+    for (auto i : a) {
+        q.push(i);
+        if (q.size() > k) { q.pop(); }
+    }
+    return q.top();
+
+    // using std::swap;
+    // k = k - 1;
+    // auto const s = a.size();
+
+    // auto l = 0;
+    // auto r = s - 1;
+
+    // while (l < r) {
+    //     auto fast = l;
+    //     auto slow = l;
+    //     auto pivit = a[r];
+    //     while (fast < r) {
+    //         if (a[fast] < pivit) {
+    //             swap(a[fast], a[slow]);
+    //             ++slow;
+    //         }
+    //         ++fast;
+    //     }
+    //     if (slow < r) swap(a[r], a[slow]);
+
+    //     if (k > slow) {
+    //         l = slow + 1;
+    //     } else if (k < slow) {
+    //         r = slow - 1;
+    //     } else {
+    //         return a[k];
+    //     }
+    // }
+    // return a[k];
+}
+
+auto main(int argc, char* args[]) -> int {
+    auto x = vector<int>{3, 2, 1, 5, 6, 4};
+    auto a = order_statistics(x, 2);
+    cout << a << endl;
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+: 2
+
+# Cheapest Flights Within K Stops
+
+There are n cities connected by some number of flights. You are given an array flights where flights[i] = [from_i, to_i , price_i] indicates that there is a flight from city from_i to city to_i with cost price_i.
+
+You are also given three integers src, dst, and k, return the cheapest price from src to dst with at most k stops. If there is no such route, return -1.
+
+Example 1:
+Input: n = 4, flights = [[0,1,100],[1,2,100],[2,0,100],[1,3,600],[2,3,200]], src = 0, dst = 3, k = 1
+Output: 700
+Explanation:
+
+The optimal path with at most 1 stop from city 0 to 3 has cost 100 + 600 = 700.
+Note that the path through cities [0,1,2,3] is cheaper but is invalid because it uses 2 stops.
+
+
+Input: n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 1
+Output: 200
+Explanation:
+The optimal path with at most 1 stop from city 0 to 2 has cost 100 + 100 = 200.

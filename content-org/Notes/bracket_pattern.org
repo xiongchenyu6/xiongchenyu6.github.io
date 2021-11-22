@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       ae841bbe-bf2e-4988-aa2e-f2b3c367c107
+:END:
+#+title: bracket pattern
+#+date: [2021-12-08 Wed 21:04]
+
+一种获取资源后要如果不用或者出错要及时释放的编程模式，简单分享一个下这种模式在各个语言的使用
+* [[id:c3f4d454-a3a9-48c1-884b-ec383dcbed12][Haskell]]
+[[bracket pattern]]
+
+* C++ RAII
+
+* Python
+#+begin_src python
+class ContextManagedResource:
+    def __enter__(self):
+        self._resource = get_resource()
+        return self._resource
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        if exc_type is not None:
+            #  handle exception here
+            pass
+
+        else:
+            pass
+
+        release_resource(self._resource)
+        return True
+
+with ContextManagedResource() as res:
+    res.method()
+    return "good"
+#+end_src
+
+#+RESULTS:

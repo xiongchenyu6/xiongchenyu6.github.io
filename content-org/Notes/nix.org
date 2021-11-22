@@ -1,0 +1,91 @@
+:PROPERTIES:
+:ID:       c15c2885-e949-4ca9-9902-c5e54f109c5a
+:END:
+PROPERTIES:
+:ID:       06bdf208-2b52-4983-a037-5df1fcc7d5ed
+:END:
+#+title: nix
+#+date: [2021-11-23 Tue 19:14]
+#+Subtitle: Research
+#+Author: Freeman
+* tips
+
+#+begin_src nix
+stdenv.mkDerivation {
+  name = "impure";
+  __impure = true; # marks this derivation as impure
+  buildCommand = "date > $out";
+}
+#+end_src
+
+Pure Functional Programming Language
+* Nix
+** Nix package manager
+** Nixos
+
+
+* Problem
+*** Runtime Deps
+     ld
+*** Static Link
+     pkg-config
+  *** FHS
+**** ubuntu
+     /lib
+     /bin
+     /home
+**** macOs
+     /Library
+     /Applications
+     /Users
+*** Manage Multiple Server
+**** Terraform + Ansible
+     断网，用错脚本
+**** Docker
+     + dockerd (80 - 100MB)
+     + containered (20 - 30MB)
+     + init + udev + reyslog (20MB)
+     + systemD (50MB)
+*** Rescure
+      修改了什么导致系统崩溃
+
+* Reproducibility
+** Pure Environment
+**** Can't access outside world during build
+** Share-by-need
+**** Share only exact same
+** Hash Lock
+*** Version Lock
+** Reproducible Environment
+*** Dev Shell
+
+* Rollback
+* Devops
+* Binary Distribution
+*** Nixos
+
+* Who use nix
+ + [[https://github.com/input-output-hk/cardano-node][Cardano]]
+ + [[https://github.com/dapphub/dapptools][dapphub]]
+ + [[https://github.com/obsidiansystems/obelisk#obelisk][obelisk]]
+
+* Install
+** Channels
+#+begin_src
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+nix-channel --update
+#+end_src
+* Conclution
+ + 一键进入运行/编译/开发环境
+ + 一键构建最小系统
+ + 一键升级依赖，不用担心破坏系统
+ + 一键发布最小化安装环境
+ + 一键升级部署回滚
+* How to debug
+#+begin_src sh
+nix-shell -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'
+cd $(mktemp -d) && unpackPhase && cd *
+configurePhase
+buildPhase # most time is spent here
+checkPhase && installPhase && fixupPhase
+#+end_src

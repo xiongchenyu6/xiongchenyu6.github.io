@@ -1,0 +1,80 @@
+:PROPERTIES:
+:ID:       67b2cf85-11fa-4d49-a1b0-c42f8a7cd05c
+:END:
+#+title: JavaScript
+#+date: [2021-11-20 Sat 16:36]
+
+* Y combinator
+
+1. 首先我们来一个基本的阶乘
+    #+begin_src js
+      const factorial = (n) => n===0?1:n*factorial(n-1)
+      return factorial(5)
+    #+end_src
+
+    #+RESULTS:
+    : 120
+
+2. 首先我们来一个基本的阶乘,然后把递归里面的 factorial 参数化
+    #+begin_src js
+const factorial = (n) => n===0?1:n*factorial(n-1)
+const factorial_gen = (f) => (n) => n===0?1:n*f(n-1)
+return factorial_gen(factorial)(5)
+    #+end_src
+
+    #+RESULTS:
+    : 120
+
+3. 观察 2 可以发现， =factorial= 和 =factorial_gen= 逻辑是一样的，唯一差别就是参数化了递归的函数，  =factorial_gen(factorial)= === =factorial=
+   那么如果我想让 =factorial_gen= 可以 apply 自己,则需要递归的时候把本地也作为参数传入，可以得到 =factorial_iso= , =factorial_iso(factorial_iso)= ===  =factorial=
+    #+begin_src js
+const factorial_iso = (f) => (n) => n===0?1:n*f(f)(n-1)
+return factorial_iso(factorial_iso)(5)
+    #+end_src
+
+    #+RESULTS:
+    : 120
+
+4. 写 2 遍 =factorial_iso= 太麻烦了， ~factorial_iso(factorial_iso)(5)~ 可以写成如下
+
+    #+begin_src js
+return (f => f(f)) (f => n => (n === 0)? 1 : (n * f(f)(n - 1)))
+(5)
+    #+end_src
+
+    #+RESULTS:
+    : 120
+
+5. 根据 Y combinator 定义 $Y = (\lambda x (x x)) (\lambda x. g (x x))$
+    写成对应的 js 为 ~const Y = (f => (x => x(x)(x => f(x(x)))))~
+    已知 ~const factorial_gen = (f) => (n) => n===0?1:n*f(n-1)~
+
+    $Y(factorial\_gen) = (f => (x => x(x)(x => f(x(x))))) (f) => (n) => n===0?1:n*f(n-1)$
+
+    $(x=>x(x)) (x=> ((f) => (n) => n===0?1:n*f(n-1))(x(x)))$
+
+    $(x=>x(x))(x=> ((n) => n===0?1:n*x(x)(n-1)))$
+
+    和第四步结果完全一样
+
+
+6. 实际上 Y combinator 在 js 中会 Maximum call stack size exceeded 因为 js 不是惰性求值，后半段 f(x(x))里面的 x 就是 x 本身，就会爆栈了,实际上我们要等到初始值 v 也就是 5 传入的时候才能求值，那么只需 f(x(x)) 变为 f (\v => x(x)(v)), 显性表示参数来阻止求值，然后我们就有了一个等价的 z combinator
+    #+begin_src js
+const Z = f => (x => f(v => x(x)(v)))(x => f(v => x(x)(v)));
+const factorial_gen = (f) => (n) => n===0?1:n*f(n-1)
+return Z(factorial_gen)(5)
+    #+end_src
+
+7. 关于 Z combinator 的理解， =factorial_iso= 可以用 =factorial_gen= 表示
+   #+begin_src js
+   const factorial\_iso = (f) => (n) => n===0?1:n*f(f)(n-1)
+   #+end_src
+   使 g=f(f) 带入可以得到
+
+   #+begin_src js
+const factorial_iso = (f) => {
+    const factorial_gen = (n) => (g) => n===0?1:n*g(n-1)
+    return factorial_gen(n)(f(f)) //
+}
+   #+end_src
+最后的 ~return (n) => f(f)(n)~ 和 z combinator 等价,重复 2 遍得到无限递归，就是 Z combinator 了

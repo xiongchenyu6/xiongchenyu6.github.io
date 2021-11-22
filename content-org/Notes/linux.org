@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       d9fccfb3-1faf-44b6-af56-9fa7af83f87e
+:END:
+#+title: Linux
+#+date: [2021-11-24 Wed 01:41]
+
+* file system
+
+** https://raw.githubusercontent.com/NixOS/nixpkgs/master/pkgs/applications/blockchains/go-ethereum/default.nixhttps://raw.githubusercontent.com/NixOS/nixpkgs/master/pkgs/applications/blockchains/go-ethereum/default.nixfile lock
++ flock
++ lslocks

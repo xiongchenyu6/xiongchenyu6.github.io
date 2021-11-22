@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       a2edb5c8-49ba-4adb-b90a-c6599a9e55aa
+:END:
+#+title: bibtex
+#+date: [2021-11-23 Tue 11:52]
+
+* program
+- [[id:c12f9e95-80b7-4891-811a-6754def8f9ff][Zotero]]

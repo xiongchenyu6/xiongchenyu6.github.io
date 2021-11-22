@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       4617e6a8-d58f-4c8d-8b19-59f3726e0aa9
+:END:
+#+title: Lexier
+#+date: [2021-12-04 Sat 05:46]
+
+Tokenize the input stream

@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       3aca3f19-1823-4a18-b15e-fc6272ff9b1b
+:END:
+#+title: Plan
+#+date: [2021-11-20 Sat 17:01]
+
+* Long Term
+** TODO [#C] 200+ Leetcode questions :2020:
+SCHEDULED: <2020-12-31 Thu>
+** TODO [#C] Learn a new language (coq or agda) :2020:
+DEADLINE: <2020-12-31 Thu> SCHEDULED: <2020-12-31 Thu>
+** TODO [#C] Learn automatic theory prove :2020:ATTACH:
+SCHEDULED: <2020-12-31 Thu>
+:PROPERTIES:
+:Effort:   7
+:END:
+:LOGBOOK:
+CLOCK: [2020-03-27 Fri 00:17]--[2020-03-27 Fri 00:17] =>  0:00
+:END:
+[[https://www.comp.nus.edu.sg/~henz/cs3234/][nus 3234]]

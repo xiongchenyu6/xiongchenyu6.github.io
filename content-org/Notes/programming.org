@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       0c96be52-62a0-482d-a59a-763d67e69120
+:END:
+#+title: Programming
+#+date: [2021-11-20 Sat 16:25]
+
+* [[id:40d83b23-815e-43a2-8c34-a429880001e6][Programming Language]]
+* Data Structure and Algorithms
+
+- [[id:a581dc7f-4efc-4f46-8226-a5b34a9fd223][Data Structure]]
+- [[id:f5adc1e4-eae4-4e3b-978d-96d13d0ae578][Algorithms]]

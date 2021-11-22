@@ -1,0 +1,59 @@
+:PROPERTIES:
+:ID:       5259d507-5b77-4a9b-ba41-4de1181e2439
+:END:
+#+title: openssl
+#+date: [2022-01-13 Thu 23:14]
+#+author:
+#+hugo_custom_front_matter: :author "Xiong ChenYu"
+
+* 自生成key以及签名
+:PROPERTIES:
+:EXPORT_FILE_NAME: how-to-generate-self-signed-certificates
+:EXPORT_DATE: <2021-11-23 Tue>
+:END:
+dsfasafafdsfdsaffdsafdafdsffdfdfadsfsfdfasf
+dafdsfdsfdsafsdfdfasdfdfsdf
+
+#+begin_src sh
+openssl req -new -x509 -subj "/C=SG/CN=fingerone.com" \
+                  -addext "subjectAltName = DNS:fingerone.com" \
+                  -addext "certificatePolicies = 1.2.3.4" \
+                  --keyout localhost.pem -out localhost.pem -days 365 -nodes
+#+end_src
+
+#+begin_src sh
+openssl req -new -x509 -subj "/C=SG/CN=fingertwo.com" \
+                  -addext "subjectAltName = DNS:fingertwo.com" \
+                  -addext "certificatePolicies = 1.2.3.4" \
+                  --keyout localhost2.pem -out localhost2.pem -days 365 -nodes
+#+end_src
+
+#+begin_src sh
+openssl req -new -x509 -subj "/C=SG/CN=riskcontrol.com" \
+                  -addext "subjectAltName = DNS:riskcontrol.com" \
+                  -addext "certificatePolicies = 1.2.3.4" \
+                  --keyout riskcontrol.pem -out riskcontrol.pem -days 365 -nodes
+#+end_src
+
+#+begin_src sh
+openssl pkcs12 -export -out identity.pfx -inkey riskcontrol.pem -in riskcontrol.pem -certfile riskcontrol.pem
+#+end_src
+
+* Request for public cert
+#+begin_src sh
+openssl genpkey -genparam -algorithm ec -pkeyopt ec_paramgen_curve:P-256 -out ECPARAM.pem
+openssl req -newkey ec:ECPARAM.pem -keyout PRIVATEKEY.key -out MYCSR.csr
+#+end_src
+
+
+* compare cert public key and public key from private key
+
+#+begin_src sh
+openssl x509 -pubkey -in SERVER.cert -noout
+openssl pkey -pubout -in PRIVATEKEYNOPASS.key     
+#+end_src
+
+* remove passphrase
+#+begin_src sh
+openssl ec -in xxx -out xxx
+#+end_src

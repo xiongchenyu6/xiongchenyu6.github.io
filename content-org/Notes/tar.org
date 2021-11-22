@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       c89b6510-421c-4cfb-b615-b70268ca0537
+:END:
+#+title: tar
+#+date: [2021-11-20 Sat 12:20]
+
+* Zip
+#+begin_src sh
+tar -czvf name-of-archive.tar.gz /path/to/directory-or-file
+#+end_src
+
+* Unzip
+#+BEGIN_SRC sh
+tar -xjvf file.tar.bz2
+tar -xzvf file.tar.gz
+tar -xvf file.tar
+#+END_SRC

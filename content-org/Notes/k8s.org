@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       4d7e6083-7dd3-43e6-81a6-9f6b523a732e
+:END:
+#+title: k8s
+#+date: [2021-11-29 Mon 11:47]
+
+* Job
+* CronJob
+* Replica Controller
+* Replica Set
+* Deployment
+* Service
+* Storage
+** PersistVolumn
+** StorageClass
+** PersistVolumnClain

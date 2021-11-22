@@ -1,0 +1,57 @@
+:PROPERTIES:
+:ID:       fda27c3b-6380-4188-8df3-f11a77d8242c
+:END:
+#+title: regex
+#+date: [2021-12-01 Wed 13:07]
+
+* Syntax
++? *? ?? non-hungry match
+
+* lib
+** [[id:4c0500c4-59b2-4a3e-b0dc-c16c5c6d5b24][Python]]
+match == search(^)
+#+begin_src python
+import re
+regex = "o"
+print(re.match(regex, "dog"))
+print(re.search(regex, "dog"))
+return re.search(regex, "dog")
+#+end_src
+
+#+RESULTS:
+: <re.Match object; span=(1, 2), match='o'>
+
+#+begin_src python
+import re
+regex = "o"
+return re.match(regex, "dog")
+#+end_src
+
+#+RESULTS:
+: None
+
+#+begin_src python
+import re
+regex = ".*o"
+return re.match(regex, "dog")
+#+end_src
+
+#+RESULTS:
+: <re.Match object; span=(0, 2), match='do'>
+
+#+begin_src python
+import re
+regex = "\W+"
+return re.split(regex, "Words, words, words.dog.", 2)
+#+end_src
+
+#+RESULTS:
+| Words | words | words.dog. |
+
+
+
+#+begin_src scala
+println("test")
+#+end_src
+
+#+RESULTS:

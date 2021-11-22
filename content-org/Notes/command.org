@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       aeebb8bf-e481-4b1c-b869-15e659025982
+:END:
+#+title: command
+#+date: [2021-11-24 Wed 01:41]

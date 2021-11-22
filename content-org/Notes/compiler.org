@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       53ed79d3-d781-46f4-8ede-cc622075b0ab
+:END:
+#+title: Compiler
+#+date: [2021-12-04 Sat 05:45]
+
+
+- [[id:4617e6a8-d58f-4c8d-8b19-59f3726e0aa9][Lexier]]
+-[[id:a883ef0a-6ea3-455a-9288-0cce33c1e233][ Parser]]

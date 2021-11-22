@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       f794bb7b-240c-415c-b9de-9f8a217efb12
+:END:
+#+title: blockchain
+#+date: [2023-01-18 Wed 19:37]
+
+* ethereum
+
+* Oracle
+- [[id:b32799bd-6a95-421a-9efa-c027a561c349][chainlink]]
+- [[id:59a98aab-da13-45d5-bb03-e334a80a9739][winklink]]
+  
+  
+

@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       40d83b23-815e-43a2-8c34-a429880001e6
+:END:
+#+title: Programming Language
+
+My favorite programming languages.
+- [[id:939534a7-44b5-4b0f-8f1f-f8e6dacd01f7][Asm]]
+- [[id:d43d9a27-4b35-4279-b8ec-2f1869b67109][C/C++]]
+-[[id:7078bf34-9571-4f36-9dfb-ac8b64129085][ Clojure]]
+- [[id:735777cd-a1b3-4277-8f80-80653f9a694f][Emacs Lisp]]
+- [[id:67b2cf85-11fa-4d49-a1b0-c42f8a7cd05c][JavaScript]]
+- [[id:c3f4d454-a3a9-48c1-884b-ec383dcbed12][Haskell]]
+- [[id:c198f13e-0d4b-4326-9d59-961a25df30c4][Latex]]
+- [[id:3601f8d4-2155-4e16-b933-15ac9dfba516][SQL]]
+- [[id:6448ed18-21cb-411c-ad1b-6dd55acd44fe][Shell]]
+- [[id:53eef633-0f97-4715-8825-221a49c6fd9a][Php]]
+- [[id:4c0500c4-59b2-4a3e-b0dc-c16c5c6d5b24][Python]]
+- [[id:c8205690-b7b3-4744-b05d-4eb4b94bab8b][Scala]]

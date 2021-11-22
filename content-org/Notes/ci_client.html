@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>ci</title>
+<meta name="author" content="Freeman xiong"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/black.css" id="theme"/>
+<link rel="stylesheet" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"/>
+<style>
+/* Position computations of klipse get confused by reveal.js's scaling.
+   Hence, scaling should be disabled with this code.  Fix height of code area
+   with scrollbar (use overflow instead of overflow-y to restore CodeMirror
+   setting afterwards): */
+.reveal section pre { max-height: 70vh; height: auto; overflow: auto; }
+/* Reset some reveal.js and oer-reveal settings: */
+.reveal section pre .CodeMirror pre { font-size: 2em; box-shadow: none; width: auto; padding: 0.4em; display: block; overflow: visible; }
+/* Enlarge cursor: */
+.CodeMirror-cursor { border-left: 3px solid black; }
+</style>
+<script>
+    window.klipse_settings = {
+codemirror_options_in: {
+lineNumbers: true,
+autoCloseBrackets: true
+},
+        selector_eval_html: '.language-klipse-html',
+        selector_eval_js: '.language-klipse-javascript',
+        selector_eval_js: '.language-klipse-js',
+        selector_eval_python_client: '.language-klipse-python'
+    };
+</script>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1 class="title">ci</h1><h2 class="author">Freeman xiong</h2><h2 class="date">2023-01-20 Fri 19:34</h2><p class="date">Created: 2023-01-20 Fri 19:35</p>
+</section>
+<section id="table-of-contents-section">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#/slide-1">1. Headline with data-auto-animate</a></li>
+<li><a href="#/slide-2">2. Headline with data-auto-animate</a></li>
+<li><a href="#/slide-3">3. <font color="red">This is a sample sentence in red text color.</font></a></li>
+<li><a href="#/slide-4">4. 纯函数编程与加密货币</a></li>
+<li><a href="#/slide-5">5. 文学编程</a>
+<ul>
+<li><a href="#/slide-5-1">5.1. 方便分享</a></li>
+<li><a href="#/slide-5-2">5.2. 发送邮件</a></li>
+</ul>
+</li>
+<li><a href="#/slide-6">6. 防御性编程</a></li>
+<li><a href="#/slide-7">7. 纯函数编程与前端</a></li>
+<li><a href="#/slide-8">8. 纯函数编程与流计算</a></li>
+<li><a href="#/slide-9">9. 纯函数式运维</a></li>
+<li><a href="#/slide-10">10. 宏</a></li>
+<li><a href="#/slide-11">11. Scheduler</a>
+<ul>
+<li><a href="#/slide-11-1">11.1. HTML and CSS</a></li>
+<li><a href="#/slide-11-2">11.2. Clojure</a></li>
+</ul>
+</li>
+<li><a href="#/slide-12">12. page 1</a></li>
+<li><a href="#/slide-13">13. page 2</a>
+<ul>
+<li><a href="#/slide-13-1">13.1. sh</a></li>
+<li><a href="#/slide-13-2">13.2. code</a></li>
+<li><a href="#/slide-13-3">13.3. scala&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-1" data-auto-animate>
+<h2 id="1"><span class="section-number-2">1.</span> Headline with data-auto-animate</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-2" data-auto-animate>
+<h2 id="2"><span class="section-number-2">2.</span> Headline with data-auto-animate</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-3">
+<h2 id="3"><span class="section-number-2">3.</span> <font color="red">This is a sample sentence in red text color.</font></h2>
+
+</section>
+</section>
+<section>
+<section id="slide-4">
+<h2 id="4"><span class="section-number-2">4.</span> 纯函数编程与加密货币</h2>
+</section>
+</section>
+<section>
+<section id="slide-5">
+<h2 id="5"><span class="section-number-2">5.</span> 文学编程</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+</section>
+<section id="slide-5-1">
+<h3 id="5-1"><span class="section-number-3">5.1.</span> 方便分享</h3>
+</section>
+<section id="slide-5-2">
+<h3 id="5-2"><span class="section-number-3">5.2.</span> 发送邮件</h3>
+</section>
+</section>
+<section>
+<section id="slide-6">
+<h2 id="6"><span class="section-number-2">6.</span> 防御性编程</h2>
+</section>
+</section>
+<section>
+<section id="slide-7">
+<h2 id="7"><span class="section-number-2">7.</span> 纯函数编程与前端</h2>
+</section>
+</section>
+<section>
+<section id="slide-8">
+<h2 id="8"><span class="section-number-2">8.</span> 纯函数编程与流计算</h2>
+</section>
+</section>
+<section>
+<section id="slide-9">
+<h2 id="9"><span class="section-number-2">9.</span> 纯函数式运维</h2>
+</section>
+</section>
+<section>
+<section id="slide-10">
+<h2 id="10"><span class="section-number-2">10.</span> 宏</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-11">
+<h2 id="11"><span class="section-number-2">11.</span> Scheduler</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+</section>
+<section id="slide-11-1">
+<h3 id="11-1"><span class="section-number-3">11.1.</span> HTML and CSS</h3>
+<pre><code class="language-klipse-html" roll-in>
+&lt;style&gt;
+h1.demo-headline { color: blue; }
+p.demo-para { color: green; }
+#demo-id { color: yellow; }
+&lt;/style&gt;
+&lt;h1 class=""&gt;Hello World!&lt;/h1&gt;
+&lt;p class="demo-para"&gt;This is a paragraph of text with class “demo-para”.&lt;/p&gt;
+&lt;p id="demo-id"&gt;This is another paragraph with id “demo-id”.&lt;/p&gt;
+</code></pre>
+</section>
+<section id="slide-11-2">
+<h3 id="11-2"><span class="section-number-3">11.2.</span> Clojure</h3>
+<div class="org-src-container">
+
+<pre class="src src-clojure"><span style="color: #ffffff;">(</span><span style="color: #b6a0ff;">defn</span> <span style="color: #feacd0;">greet</span> <span style="color: #ff66ff;">[</span>person<span style="color: #ff66ff;">]</span>
+  <span style="color: #ff66ff;">(</span>str <span style="color: #79a8ff;">"Hello "</span> person<span style="color: #ff66ff;">)</span><span style="color: #ffffff;">)</span>
+<span style="color: #ffffff;">(</span>map greet <span style="color: #ff66ff;">[</span><span style="color: #79a8ff;">"Alice"</span> <span style="color: #79a8ff;">"Bob"</span> <span style="color: #79a8ff;">"Carol"</span><span style="color: #ff66ff;">]</span><span style="color: #ffffff;">)</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-12">
+<h2 id="12"><span class="section-number-2">12.</span> page 1</h2>
+<div style="display: grid; grid-template-columns: auto auto auto;">
+
+
+<div id="org1083d4a" class="figure">
+<p><img src="page_1/2022-12-05_13-36-25_screenshot.png" alt="2022-12-05_13-36-25_screenshot.png" />
+</p>
+</div>
+
+<ul>
+<li>Stuck? - Steckst fest?</li>
+<li>Experiment/Try - Experimentieren</li>
+<li>Document - Dokumentieren</li>
+<li>Ask/Move on! - Anfragen/Hilfe holen</li>
+
+</ul>
+<div>
+<ul>
+<li>haho</li>
+<li>hi</li>
+
+</ul>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-13">
+<h2 id="13"><span class="section-number-2">13.</span> page 2</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+</section>
+<section id="slide-13-1">
+<h3 id="13-1"><span class="section-number-3">13.1.</span> sh</h3>
+<ul>
+<li data-fragment-index="4" class="fragment grow">I will grow.</li>
+<li data-fragment-index="3" class="fragment shrink">I will shrink.</li>
+<li data-fragment-index="2" class="fragment zoom-in">I zoomed in.</li>
+<li data-fragment-index="1" class="fragment fade-out">I will fade out.</li>
+<li>I don't fragment.</li>
+
+</ul>
+</section>
+<section id="slide-13-2">
+<h3 id="13-2"><span class="section-number-3">13.2.</span> code</h3>
+<pre><code class="language-klipse-js" >
+console.log<span style="color: #ffffff;">(</span><span style="color: #79a8ff;">"Hello World!"</span><span style="color: #ffffff;">)</span>;
+</code></pre>
+</section>
+<section id="slide-13-3">
+<h3 id="13-3"><span class="section-number-3">13.3.</span> scala&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></h3>
+<div class="org-src-container">
+
+<pre class="src src-scala"><span style="color: #f78fe7;">sealed</span> <span style="color: #b6a0ff;">trait</span> <span style="color: #6ae4b9;">Maybe</span><span style="color: #ffffff;">[</span>+<span style="color: #00bcff;">T</span><span style="color: #ffffff;">]</span>
+<span style="color: #f78fe7;">final</span> <span style="color: #b6a0ff;">case</span> <span style="color: #b6a0ff;">object</span> <span style="color: #00bcff;">Empty</span> <span style="color: #b6a0ff;">extends</span> <span style="color: #6ae4b9;">Maybe</span><span style="color: #ffffff;">[</span><span style="color: #00bcff;">Nothing</span><span style="color: #ffffff;">]</span>
+<span style="color: #f78fe7;">final</span> <span style="color: #b6a0ff;">case</span> <span style="color: #b6a0ff;">class</span> <span style="color: #6ae4b9;">Just</span><span style="color: #ffffff;">[</span><span style="color: #00bcff;">T</span><span style="color: #ffffff;">](</span>t<span style="color: #b6a0ff;">:</span> <span style="color: #6ae4b9;">T</span><span style="color: #ffffff;">)</span> <span style="color: #b6a0ff;">extends</span> <span style="color: #6ae4b9;">Maybe</span><span style="color: #ffffff;">[</span><span style="color: #00bcff;">T</span><span style="color: #ffffff;">]</span>
+</pre>
+</div>
+
+
+<div id="orgf6c6c4d" class="figure">
+<p><img src="file:///home/freeman.xiong/Dropbox/Org/.attach/34/8C13EA-FA0D-46DA-BA71-BF3B990297A0/2022-02-10_15-50-45_screenshot.png" alt="2022-02-10_15-50-45_screenshot.png" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+width: 1500,
+height: 1000,
+minScale: 1.00,
+maxScale: 1.00,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'convex', // see README of reveal.js for options
+transitionSpeed: 'default',
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+</script>
+<script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+<script>
+/* Recompute layout upon changes by klipse.  Code fragment from
+   asciidoctor-revealjs-klipse by Timothy Pratley under GPLv3:
+   https://github.com/timothypratley/asciidoctor-revealjs-klipse/blob/master/docs/docinfo-footer.html */
+Reveal.addEventListener( 'slidechanged', function( event ) {
+    window.dispatchEvent( new Event('resize') );
+} );
+</script>
+</body>
+</html>

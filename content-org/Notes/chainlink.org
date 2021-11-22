@@ -1,0 +1,80 @@
+:PROPERTIES:
+:ID:       b32799bd-6a95-421a-9efa-c027a561c349
+:END:
+#+title: chainlink
+#+date: [2022-11-01 Tue 11:36]
+#+cite_export: csl chicago-fullnote-bibliography.csl
+#+PANDOC_OPTIONS: pdf-engine:tectonic
+
+* Offchain reporting network
+** permissionless newtwork
+- offline nodes(provide external data to blockchain network)
+  - *data providers* who provide predefined data such as [[https://market.link/nodes/Tiingo][Tiingo]]
+  - *node* who runs any api defined by the oracle contract created by users such as [[https://market.link/nodes/Chainlayer][Chainlayer]]
+- feed
+  - users need data create smart contracts and give out link token as incintive to data providers
+  - users (data requesters) themselves choose which nodes are composed into their oracle network.
+  - The selection of nodes can be based upon different metrics such as a node’s off-chain reputation, historical uptime, average response time, selection of data sources offered from [[https://market.link/overview][market]]
+** OCR protocal[cite:@breidenbachChainlinkOffchainReporting]
+*** Pacemaker[cite:@chainlinkIntroducingCrossChainInteroperability2021]
+- The pacemaker protocol drives the report generation process, which is structured into epochs.
+- Each epoch has a different leader node who coordinates the creation of a predetermined number of reports with observations provided from the follower nodes.
+- The pacemaker protocol runs continuously and periodically initiates a new epoch and pseudo-randomly selects a new leader.
+- Each follower node monitors the performance of the leader and if not enough progress is made within a specific timeframe, a new epoch is initiated and a new leader node is selected.
+*** Report generation
+- The report generation protocol divides each epoch into numerous rounds, with each round corresponding to the creation of a new report.
+- In each round, observations from each oracle node are collected and an aggregated report is generated that is signed by a threshold of oracles.
+- To prevent unnecessary on-chain transactions, a report is only created and validated by oracles if the previous on-chain update has deviated beyond a specific threshold against an off-chain data source (e.g. 0.5%) or a specific time interval has passed (e.g. 1 hour).
+*** Transmission
+- The transmission protocol encapsulates how the report is submitted on-chain and does not require communication between nodes.
+- The transmission protocol delays each oracle’s submission on-chain pseudo-randomly to ensure a staged sending process, ensuring not too many redundant copies are submitted on-chain.
+- Once a report has been validated by miners and added to the blockchain ledger, the transmission protocol process ends for the current round.
+** Defination
+- f means the 
+** single report within a round
+- A new round starts and the leader of the current epoch requests an observation from all follower nodes in the network.
+- Each follower node fetches data from a predefined data source API, signs the data using their private key, and sends the result back to the leader node.
+- The leader node waits for at least 2f + 1 follower nodes to respond, plus a grace period, then sorts the responses by value, generates a report, and sends it to all follower nodes.
+- Each follower node validates the report by checking the values are sorted, contains observations from at least 2f + 1 follower nodes, all signatures are valid, and that the median value exceeds the deviation threshold of the previous on-chain update or a time-based heartbeat condition has occurred.
+- If all conditions are met, each follower node generates a compressed report with just the node observations and oracle identities, signs it, and sends it back to the leader node.
+- Once the leader node obtains signed reports from more than f follower nodes, the leader assembles a final report from the followers’ signed reports, which is then broadcasted to all follower nodes.
+- When each follower node receives the final report for the first time, they rebroadcast it to every node, ensuring all nodes have received the report.
+- When a follower node receives broadcast from more than f nodes, the transmission protocol is started.
+- The report generation protocol for a round is now complete and the leader node waits a predefined amount of time until starting a new round. If a new epoch occurs or the leader does not make progress in a specified amount of time, then a new epoch is created and a new round initiates.
+- In the transmission protocol, to prevent unnecessary gas costs, the report is put through a filter and passes if 1) there is no backlog of reports or 2) the median value in the new report deviates beyond the median value of the report in the backlog by a sufficient threshold.
+- If the report passes the filter, a staging process begins where one or multiple nodes are pseudorandomly chosen to create a transaction to submit the report on-chain.
+- If a transaction is not confirmed on-chain within a specific time delay, a round robin approach is started where additional nodes begin to make an on-chain transaction in a time-staggered manner.
+- Once the report is added to the blockchain, an on-chain smart contract validates the signatures, stores the median value, pays nodes who contributed an observation and compensates the transmitter for its transaction gas costs.
+- The transmission protocol for a round ends when the corresponding report has been accepted by the contract.
+
+* Pure and side effect
+** Pure
+#+begin_src python
+def add(x, y):
+    return x + y
+#+end_src
+** side effect
+
+* from system perspective to blockchain perspective
+* what is blockchain
+* why we need oracle
+* chainlink
+** architecture
+** features compare to winklink
+| feature/product           | winklink | chainlink |
+|---------------------------+----------+-----------|
+| Data Feeds (price feeds)  | yes      | yes       |
+| - proof of reverse)       | no       | yes       |
+| - Nft Floor price         | no       | yes       |
+| VRF                       | yes      | yes       |
+| Any Api                   | no       | yes       |
+| Smart contract automation | no       | yes       |
+
+** Any api
+To enable user to use any api
+1. Provide 
+** standlone Tvm simulator for automation
+
+
+
+

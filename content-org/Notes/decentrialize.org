@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       01844d47-6f3c-465a-a324-b989db7d9283
+:END:
+#+title: decentrialize
+#+date: [2021-12-18 Sat 23:37]
+
+* Hybrid Decentralized
+* Partially Centralized
+* Purely Decentralized
+* Unstructured
+* Structured

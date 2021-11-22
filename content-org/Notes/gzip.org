@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       b32a8629-f3a5-43d2-8fcf-e62ab1f5e755
+:END:
+#+title: Gzip
+#+date: [2021-11-20 Sat 16:09]
+
+#+BEGIN_SRC shell
+gzip -d xxx.gz
+#+END_SRC

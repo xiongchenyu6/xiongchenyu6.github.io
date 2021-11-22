@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       212084CC-7DB5-4E81-8915-D5771D7B3F39
+:END:
+#+title: tron
+#+date: [2022-08-04 Thu 15:00]
+#+OPTIONS: ^:nil
+#+OPTIONS: _:nil
+#+OPTIONS: toc:nil
+
+* Presentations
+
+* Coin and usage
+
+| Coin  | chain      | Usage                                                       |
+|-------+------------+-------------------------------------------------------------|
+| TRX   | Tron       | Native token                                                |
+| SUN   | Tron Erc20 | Sun Swap stake token                                        |
+| veSun | Tron Erc20 | Stake SUN, and get veSun to vote and boost liquidity mining |
+| BTT   | btfs       | btfs native token                                           |
+| WBTT  | btfs       | token get as incentive for user use their storage to mine   |
+| JST   | Tron Erc20 | justLend stake token                                        |
+| WIN   | Tron Erc20 | token use to pay for wink link oracle                       |
+| TUSD  | Tron Erc20 | True USD an Fiat Collateralized stable coin                 |
+| USDD  | Tron Erc20 | Algorithmic Stablecoins                                     |
+| USDJ  | Tron Erc20 | Just Lend Crypto-Collateralized Stablecoins                 |
+
+* how to bridge btt from Tron wrappered to btfs
+
+[[https://bt.io/bridge/][Bittorrent Bridge]]
+
+* TODO

@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       4c0500c4-59b2-4a3e-b0dc-c16c5c6d5b24
+:END:
+#+title: Python
+#+date: [2021-11-20 Sat 15:56]
+
+* equality
+ ~==~ check value and ~is~ check reference
+
+* kargs
+#+begin_src python :async
+def x(**kargs):
+    print(y)
+return x(y=10)
+#+end_src
+
+#+RESULTS:

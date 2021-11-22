@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       c198f13e-0d4b-4326-9d59-961a25df30c4
+:END:
+#+title: Latex
+#+date: [2021-11-22 Mon 15:38]
+* Package install
+#+begin_src
+tlmgr update --self
+tlmgr install moderncv
+#+end_src
+* Import package
+ #+begin_src latex
+\usepackage{listings}
+ #+end_src
+
+* 中文支持
+mint package

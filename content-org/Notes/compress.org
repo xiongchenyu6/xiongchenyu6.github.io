@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       239948a8-47af-412f-95fb-8374c5670ad5
+:END:
+#+title: Compress
+#+date: [2021-11-20 Sat 16:09]
+
+- [[id:c89b6510-421c-4cfb-b615-b70268ca0537][tar]]
+- [[id:b32a8629-f3a5-43d2-8fcf-e62ab1f5e755][Gzip]]

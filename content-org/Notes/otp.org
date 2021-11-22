@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       0133e3e2-3101-43da-813c-fb0e7a962cc4
+:END:
+#+title: otp
+#+date: [2022-12-11 Sun 13:29]
+
+#+begin_src sh
+oathtool -v --totp -d 6 12345678909876543210
+
+export hex = ${echo 8f5483295745b11bd351 | xxd -r -p | base32}
+
+qrencode -o user.png 'otpauth://totp/user@machine?secret=DK2DEFASV26A====
+qrencode -t UTF8 'otpauth://totp/user@machine?secret=DK2DEFASV26A===='
+#+end_src

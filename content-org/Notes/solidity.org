@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       db3652fa-eefb-47e6-bcfe-8c07dff8e197
+:END:
+#+title: solidity
+#+date: [2022-12-07 Wed 21:34]
+#+author:
+#+hugo_custom_front_matter: :author "Xiong ChenYu"
+
+* solidity caveats
+** Function type
+| Type       | Description                   | Alter State |
+|------------+-------------------------------+-------------|
+| pure       | Doesn't read or write data    | [ ]           |
+| view       | Reads, but doesn't write data | [ ]           |
+| nonpayable | Default, Probably writes data | [X]           |
+| payable    | Expecting payment of ether    | [X]           |
+
+** Calling smart contracts functions
+
+| Method | Create Transaction | Alter State |
+|--------+--------------------+-------------|
+| call() | [ ]                  | [ ]           |
+| send() | [X]                  | [X]           |

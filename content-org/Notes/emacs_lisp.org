@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       735777cd-a1b3-4277-8f80-80653f9a694f
+:END:
+#+title: Emacs Lisp
+
+- open elisp shell by ~M-x ielm~
+
+A lisp
+
+#+begin_src emacs-lisp
+(setq test "kittens")
+
+(put 'test 'noun '(a buzzing little bug))
+(put 'test 'verb 'transitive)
+
+(defun test ()
+  (message "puppies"))
+
+(symbol-value 'test)    ; => "kittens"
+(symbol-function 'test) ; => (lambda nil (message "puppies"))
+(symbol-plist 'test)  ; => (function-history (nil (lambda nil (message "puppies"))) noun (a buzzing little bug) verb transitive)
+#+end_src
+
+#+RESULTS:
+| lambda | nil | (message puppies) |

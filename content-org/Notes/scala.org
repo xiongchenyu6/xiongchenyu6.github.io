@@ -1,0 +1,63 @@
+:PROPERTIES:
+:ID:       c8205690-b7b3-4744-b05d-4eb4b94bab8b
+:END:
+#+title: Scala
+#+date: [2021-11-20 Sat 13:26]
+
+* Scala
+** Varent
+#+BEGIN_SRC scala
+A =:= B means A must be exactly B
+A <:< B means A must be a subtype of B (analogous to the simple type constraint <:)
+A <%< B means A must be viewable as B, possibly via implicit conversion (analogous to the simple type constraint <%)
+if A <: B then T[A] and T[B] not relationship then invarent
+if A <: B then T[A] <: T[B] then covarrent
+if A <: B then T[B] <: T[A] then contravarient
+#+END_SRC
+#+BEGIN_SRC java
+List<? extends Integer> a = new ArrayList<Integer>();
+List<? super Integer> b = new ArrayList<Integer>();
+a.add(3);    // fails; let’s try with null
+a.add(null); // works
+b.add(3);    // no problem here
+Integer ai = a.get(0); // no problem here either
+Integer bi = b.get(0); // fails; let’s try with Object
+Object o = b.get(0);   // works
+#+END_SRC
+
+upper bound            lower bound
+null ------------------- Car ------------------- Object
+
+use covariance for methods which return a generic type
+use contra-variance for methods which take a generic type
+use in-variance for methods which both accept and return a generic type
+
+Covariance
+if A is a subtype of B then:
+Java:  L<A> is a subtype of L<? extends B> (use-site)
+Scala: L[A] is a subtype of L[_ <: B]      (use-site)
+L[A] is a subtype of L[+B]          (declaration-site)
+Contravariance
+if A is a supertype of B then:
+Java:  L<A> is a subtype of L<? super B> (use-site)
+Scala: L[A] is a subtype of L[_ >: B]    (use-site)
+L[A] is a subtype of L[-B]        (declaration-site)
+** Path dependent type
+#+BEGIN_SRC scala
+case class Board(length: Int, height: Int) {
+    case class Coordinate(x: Int, y: Int) {
+    require(0 <= x && x < length && 0 <= y && y < height)
+    }
+    val occupied = scala.collection.mutable.Set[Coordinate]()
+}
+
+val b1 = Board(20, 20)
+val b2 = Board(30, 30)
+val c1 = b1.Coordinate(15, 15)
+val c2 = b2.Coordinate(25, 25)
+b1.occupied += c1
+b2.occupied += c2
+// Next line doesn't compile
+b1.occupied += c2
+#+END_SRC
+** recursive schema

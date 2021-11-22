@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       4155a61b-c7cb-415c-8d6f-8bfae2e9d058
+:END:
+#+title: Discrete mathematics
+#+date: [2021-12-26 Sun 20:32]
+
+* Josephus 环
+$f(n,k) = (f(n-1,k) + k) % n$
+
+#+begin_src python
+from functools import cache
+@cache
+def j(n, k):
+    if n == 1:
+        return 1
+    ans = j(n-1,k) + k
+    if ans < n :
+        return ans
+    return ans - n
+
+return j(8,3)
+#+end_src
+
+#+RESULTS:
+: 7

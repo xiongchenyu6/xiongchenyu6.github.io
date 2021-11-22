@@ -1,4 +1,3 @@
-#+TITLE: All Post
 #+hugo_base_dir: ../
 
 #+seq_todo: TODO DRAFT DONE
@@ -20,14 +19,28 @@
 #+macro: youtube @@html:<div class="org-youtube"><iframe src="https://www.youtube-nocookie.com/embed/$1" allowfullscreen title="YouTube Video"></iframe></div>@@
 
 #+author:
+#+hugo_custom_front_matter: :author "Xiong ChenYu"
+* Nix flake for devops
+:PROPERTIES:
+:EXPORT_FILE_NAME: nffd
+:EXPORT_DATE: <2021-11-23 Tue>
+:END:
+** develop shell
+** build stage
+** test stage
+** CI/CD
+** publish stage
+** infra as code
+** deploy
 
 * OOP 和 FP 在架构弹性的比较-2 :scala:@fp:
 :PROPERTIES:
 :EXPORT_FILE_NAME: fp_vs_oop_2
 :EXPORT_DATE: <2021-11-23 Tue>
 :END:
+
 承接上文结论，简单 OOP 范式下数据结构的扩展成本比较低下，而 FP 范式下算子的扩展成本
-比较低下，在解决代码复杂度上是没有好哒方法，但是代码组织结构上还是有优化的空间。
+比较低下，在解决代码复杂度上是没有,好哒方法，但是代码组织结构上还是有优化的空间。
 这 2 种范式都有自己的方法来解决双向扩展所带来的代码分散问题。
 
 ** OOP(Visitor Pattern)
@@ -143,7 +156,6 @@ implicit val PrettyPrintNegInstance = new PrettyPrint[Neg]{
 
 
 #+END_SRC
-
 
 * OOP 和 FP 在架构弹性的比较-1 :scala:@fp:
 :PROPERTIES:
@@ -311,7 +323,6 @@ def print(expression: Expr): String = expression match {
 
 
 
-
 * Preparation
 :PROPERTIES:
 :EXPORT_FILE_NAME: prep
@@ -325,28 +336,35 @@ def print(expression: Expr): String = expression match {
   hugo server --port 1111
   #+end_example
 3. See the site served on "http://localhost:1111/".
-* Post 1
-:PROPERTIES:
-:EXPORT_FILE_NAME: post-1
-:EXPORT_DATE: 2017-07-12T17:31:56-04:00
-:END:
-Export this *first* post only by bringing point here and doing =M-x org-hugo-export-wim-to-md=.
-dsaf
 
 * Post 3
 :PROPERTIES:
-:EXPORT_FILE_NAME: post-1
+:EXPORT_FILE_NAME: post-3
 :EXPORT_DATE: 2017-07-12T17:31:56-04:00
 :END:
-Expor t this *first* post only by bringing point here and doing =M-x org-hugo-export-wim-to-md=.
-dsaf
+LaTeX formatted equation: \( E = -J \sum_{i=1}^N s_i s_{i+1} \)
+If $a^2=b$ and \( b=2 \), then the solution must be either
+$$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \]
+
+{{{oxhugoissue(130)}}}
+
+\begin{equation}
+\label{eq:1}
+C = W\log_{2} (1+\mathrm{SNR})
+\end{equation}
+
+*Here we refer to equation \ref{eq:2}.*
+
 * Post 4
 :PROPERTIES:
-:EXPORT_FILE_NAME: post-1
+:EXPORT_FILE_NAME: post-4
+:EXPORT_HUGO_RESOURCES: :src "featured-image.jpg" :name "featured-image"
 :EXPORT_DATE: 2017-07-12T17:31:56-04:00
 :END:
 Export this *first* post only by bringing point here and doing =M-x org-hugo-export-wim-to-md=.
 dsaf
+{{< youtube w7Ft2ymGmfc >}}
+
 * Post 2 :ATTACH:@fsdf:
 :PROPERTIES:
 :EXPORT_FILE_NAME: post-2
@@ -356,12 +374,7 @@ dsaf
 This post has no date.
 
 Export this *second* post only by bringing point here and doing =M-x org-hugo-export-wim-to-md=.
-* Image / Figure                                                      :image:
-** Image links :@fsdf:
-:PROPERTIES:
-:EXPORT_FILE_NAME: image-links
-:EXPORT_DATE: 2017-07-15T07:49:44-04:00
-:END:
+
 This is some text before the first heading of this post.
 *** sdkfjdkalsf
 dsafdsfdklsfl
@@ -374,3 +387,26 @@ asjfkasjf
 *** asfjlsakf
 asfsajf
 *** asf
+* Image / Figure                                                      :image:
+** Image links :@fsdf:
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_RESOURCES: :src "featured-image.jpg" :name "featured-image"
+:EXPORT_HUGO_BUNDLE: image
+:EXPORT_DATE: 2017-07-15T07:49:44-04:00
+:END:
+
+#+begin_details
+Here are the /details/.
+#+end_details
+
+#+attr_html: :open t
+#+html: <style>details summary { color: green; }</style>
+#+html: <style>details .details { color: blue; }</style>
+#+begin_details
+#+begin_summary
+Some Summary
+#+end_summary
+Here are the /details/.
+#+end_details
+

@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       ce0cb86b-88db-45b0-bb74-80cf190ebecc
+:END:
+#+title: github
+#+date: [2022-09-14 Wed 01:15]
+
+[[https://github.com/xiongchenyu6.keys][how to get someone's key]]

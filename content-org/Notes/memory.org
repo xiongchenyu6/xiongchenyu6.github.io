@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       c20fa487-a58f-40f4-a303-233786319fa2
+:END:
+#+title: memory
+#+date: [2022-01-16 Sun 19:31]
+
+* glibc :ATTACH:
+** mmap
++ 大于 128kb mmap
++ 小于 128kb brk
+
+[[attachment:_20220116_193340screenshot.png]]

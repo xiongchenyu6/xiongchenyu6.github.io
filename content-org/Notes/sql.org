@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       3601f8d4-2155-4e16-b933-15ac9dfba516
+:END:
+#+title: SQL
+#+date: [2021-11-20 Sat 15:56]

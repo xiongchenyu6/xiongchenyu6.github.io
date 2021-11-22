@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       3E96B5DD-2F02-43BC-8D56-144A0FEF0DF1
+:END:
+#+title: defi
+#+date: [2022-08-03 Wed 13:25]
+
+* Defi Stand for decentralized finance.
+
+#+begin_src dot :file i/defi.jpg
+digraph G {
+        subgraph cluster {
+                node [style=filled,color=white];
+                style=filled;
+                color=lightgrey;
+                a0[label="Blockchain[ethereum]"];
+                label = "Settlement Layer";
+        }
+        subgraph cluster1 {
+                node [style=filled];
+                b0[label="ERC20"]
+                b1[label="ERC721"]
+                b2[label="ERC1155"]
+                label = "Asset Layer";
+                color=blue
+        }
+        subgraph cluster2 {
+                label = "Protocal Layer";
+                c0[lable="Lending"]
+                c1[label="Exchange"]
+                c2[label="Deriatives"]
+                c3[label="Assets Managerment"]
+        }
+
+        start -> a0;
+        start -> b0;
+        a1 -> b3;
+        b2 -> a3;
+        a3 -> a0;
+        a3 -> end;
+        b3 -> end;
+        start [shape=Mdiamond];
+        end [shape=Msquare];
+}
+
+#+end_src
+
+#+RESULTS:
+[[file:i/defi.jpg]]

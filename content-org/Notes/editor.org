@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       3481096f-eb87-48ca-9dd3-cb7d51ce0818
+:END:
+#+title: Editor
+#+date: [2021-11-20 Sat 16:28]
+* [[id:5991a852-e617-4b28-83fc-543c10dd73ab][Emacs]]

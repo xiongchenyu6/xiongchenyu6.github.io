@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       f7cbf950-f565-4ac0-a2d3-3451d7d64083
+:END:
+#+title: docker
+#+date: [2021-11-26 Fri 18:08]
+
+* Dockerfile
+** Multiple command
+#+begin_src dockerfile
+RUN apt upgrade \
+    && apt install git build-essential
+#+end_src
+** Install
+gcc，g ++和 make。

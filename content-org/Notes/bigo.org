@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       118598d8-51f1-481f-a0a8-254ce442827c
+:END:
+#+title: bigo
+#+date: [2023-01-20 Fri 19:41]
+
+* Presentations
+- [[id:0d485e59-4ccd-48cd-847b-7822e3617444][gitlab build model index]]
+

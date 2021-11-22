@@ -1,10 +1,10 @@
 +++
 title = "OOP 和 FP 在架构弹性的比较-1"
 date = 2021-11-22T00:00:00+08:00
-lastmod = 2021-11-23T01:09:45+08:00
 tags = ["scala"]
 categories = ["fp"]
 draft = false
+author = "Xiong ChenYu"
 +++
 
 对于一个互联网公司的程序，代码的范式是很重要的，好的范式可以让你面对产品经理的指

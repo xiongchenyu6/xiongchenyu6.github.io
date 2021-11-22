@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       f5eb15db-ed20-4979-a9d7-e8e3174f6759
+:END:
+#+title: dispatch
+#+date: [2022-01-17 Mon 10:48]
+
+* static dispatch
+* dynamic dispatch
++ type erasure
+  convert the type from generic version to non generic

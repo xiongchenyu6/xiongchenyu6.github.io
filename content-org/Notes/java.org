@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       f7b705bb-e6b8-40c9-aa09-1f692b3aa781
+:END:
+#+title: Java
+#+date: [2021-11-21 Sun 22:55]
+
+* jenv
+#+begin_src
+jenv doctor
+jenv add $(/usr/libexec/java_home)
+#+end_src

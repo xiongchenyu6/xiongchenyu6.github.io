@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       65218625-2b35-4173-9aa1-5aa4552cc204
+:END:
+#+title: epoll
+#+date: [2021-12-06 Mon 20:10]
+
+https://www.fatalerrors.org/a/detailed-explanation-of-epoll-principle-and-epoll-reactor-model.html
