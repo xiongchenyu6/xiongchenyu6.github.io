@@ -16,5 +16,3 @@ hugo.linux
 
 .DS_Store
 .hugo_build.lock
-
-content/
