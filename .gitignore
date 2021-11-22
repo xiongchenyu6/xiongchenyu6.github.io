@@ -3,3 +3,18 @@ _cache/*
 .stack-work/
 TAGS
 dist-newstyle/
+### Hugo
+# Generated files by hugo
+/public/
+/resources/_gen/
+hugo_stats.json
+
+# Executable may be added to repository
+hugo.exe
+hugo.darwin
+hugo.linux
+
+.DS_Store
+.hugo_build.lock
+
+content/
