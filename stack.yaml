@@ -1,5 +1,0 @@
-resolver: lts-15.5
-allow-newer: true
-extra-deps:
-  - github: jaspervdj/hakyll
-    commit: b08dd317a381a0436607b44257c487b1930dcc72

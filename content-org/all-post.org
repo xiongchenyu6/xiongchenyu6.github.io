@@ -1,0 +1,69 @@
+#+TITLE: All Post
+#+hugo_base_dir: ../
+
+#+seq_todo: TODO DRAFT DONE
+#+seq_todo: TEST__TODO | TEST__DONE
+
+#+property: header-args :eval never-export
+
+#+startup: indent
+
+#+macro: doc [[https://ox-hugo.scripter.co/doc/$1][$2]]
+#+macro: oxhugoissue =ox-hugo= Issue #[[https://github.com/kaushalmodi/ox-hugo/issues/$1][$1]]
+#+macro: hugoissue =hugo= Issue #[[https://github.com/gohugoio/hugo/issues/$1][$1]]
+#+macro: hugopr =hugo= PR #[[https://github.com/gohugoio/hugo/pull/$1][$1]]
+#+macro: bfissue /Blackfriday/ Issue #[[https://github.com/russross/blackfriday/issues/$1][$1]]
+#+macro: commit commit [[https://github.com/kaushalmodi/ox-hugo/commit/$1][$1]]
+
+# https://scripter.co/latex-in-html/
+#+macro: latex @@html:<span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>@@
+#+macro: youtube @@html:<div class="org-youtube"><iframe src="https://www.youtube-nocookie.com/embed/$1" allowfullscreen title="YouTube Video"></iframe></div>@@
+
+#+author:
+
+* Preparation :test:
+:PROPERTIES:
+:EXPORT_FILE_NAME: prep
+:EXPORT_DATE: 2017-07-12T17:05:38-04:00
+:END:
+
+1. Be the root directory for this Hugo site (the directory containing
+   =config.toml=).
+2. Run
+  #+begin_example
+  hugo server --port 1111
+  #+end_example
+3. See the site served on "http://localhost:1111/".
+* Post 1 :image:
+:PROPERTIES:
+:EXPORT_FILE_NAME: post-1
+:EXPORT_DATE: 2017-07-12T17:31:56-04:00
+:END:
+Export this *first* post only by bringing point here and doing =M-x org-hugo-export-wim-to-md=.
+* Post 2 :ATTACH:
+:PROPERTIES:
+:EXPORT_FILE_NAME: post-2
+:EXPORT_DATE: <2021-11-22 Mon>
+:ID:       df31e1b2-aa1c-446a-b06b-920d81283a24
+:END:
+This post has no date.
+
+Export this *second* post only by bringing point here and doing =M-x org-hugo-export-wim-to-md=.
+* Image / Figure                                                      :image:
+** Image links
+:PROPERTIES:
+:EXPORT_FILE_NAME: image-links
+:EXPORT_DATE: 2017-07-15T07:49:44-04:00
+:END:
+This is some text before the first heading of this post.
+*** sdkfjdkalsf
+dsafdsfdklsfl
+1. dsfas
+2. fasdfas
+3. fsdaf
+
+*** safkasjf
+asjfkasjf
+*** asfjlsakf
+asfsajf
+*** asf
