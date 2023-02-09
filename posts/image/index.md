@@ -13,9 +13,7 @@ Here are the _details_.
 <style>details .details { color: blue; }</style>
 
 <details>
-<summary>
-Some Summary
-</summary>
+<summary>Some Summary</summary>
 <div class="details">
 
 Here are the _details_.
