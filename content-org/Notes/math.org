@@ -27,31 +27,32 @@ absurd :: Void -> a
 Primitive : No property
 Abstraction
 =Composition=
-#+BEGIN_SRC plantuml :file Image/composition.png
+#+BEGIN_SRC plantuml :file i/composition.png
 hidefootbox
 a -> b : f
 b -> c : g
 a -> c : f . g
+
 #+END_SRC
 
 #+RESULTS:
-[[file:Image/composition.png]]
+[[file:i/composition.png]]
 
 =Identity=
 f . id_a  = f
 id_a . f = f
-#+BEGIN_SRC plantuml :file Image/identity.png
+#+BEGIN_SRC plantuml :file i/identity.png
 hidefootbox
 a -> a : id_a
 a -> b : f
 #+END_SRC
 
 #+RESULTS:
-[[file:Image/identity.png]]
+[[file:i/identity.png]]
 
 =Associativity=
 h . (g . f) = (h . g) . f
-#+BEGIN_SRC plantuml :file Image/Associativity.png
+#+BEGIN_SRC plantuml :file i/Associativity.png
 hidefootbox
 a -> b : f
 b -> c : g
@@ -62,7 +63,7 @@ a -> d : h.(g.f)=(h.g).h
 #+END_SRC
 
 #+RESULTS:
-[[file:Image/Associativity.png]]
+[[file:i/Associativity.png]]
 
 =Function= :  A mapping of values to values
 ** Set

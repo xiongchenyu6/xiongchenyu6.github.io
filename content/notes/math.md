@@ -34,18 +34,18 @@ Primitive : No property
 Abstraction
 `Composition`
 
-{{< figure src="Image/composition.png" >}}
+{{< figure src="/ox-hugo/composition.png" >}}
 
 `Identity`
 f . id_a  = f
 id_a . f = f
 
-{{< figure src="Image/identity.png" >}}
+{{< figure src="/ox-hugo/identity.png" >}}
 
 `Associativity`
 h . (g . f) = (h . g) . f
 
-{{< figure src="Image/Associativity.png" >}}
+{{< figure src="/ox-hugo/Associativity.png" >}}
 
 `Function` :  A mapping of values to values
 
