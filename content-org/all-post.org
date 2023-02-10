@@ -1,4 +1,5 @@
 #+hugo_base_dir: ../
+#+hugo_section: posts
 
 #+seq_todo: TODO DRAFT DONE
 #+seq_todo: TEST__TODO | TEST__DONE
@@ -91,7 +92,6 @@ object IExpresstionPrettyPrint {
    def visit( number : Add) = s"${visit(number.a)} + ${visit(number.b)}"
    def visit( number : Nug) =  s"-${(number.a)}""
 }
-
 #+END_SRC
 
 之后无论扩展数据结构还是算子都收敛在一个文件内
@@ -173,7 +173,7 @@ implicit val PrettyPrintNegInstance = new PrettyPrint[Neg]{
 3. 代码简单易测
 
 假如有一天产品告诉你，来我们搞个计算器吧。第一期要实现加法和减法。那么你考虑的就
-是这个
+是这个:
 #+BEGIN_QUOTE
 (2 +3 ) + 4
 #+END_QUOTE

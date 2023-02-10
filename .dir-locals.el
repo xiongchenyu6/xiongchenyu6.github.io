@@ -3,7 +3,6 @@
 
 (("content-org/" . ((org-mode . ((eval org-hugo-auto-export-mode)
                                  (org-hugo-base-dir . "/home/freeman.xiong/Private/xiongchenyu6.github.io/")
-                                 (org-global-properties . (
-                                                           (header-args:author . "")
-                                                           (header-args:hugo_custom_front_matter . ":author \"Xiong ChenYu\"")
-                                 )))))))
+                                 (org-hugo-section . "notes")
+                                 (org-export-with-author . nil)
+                                 )))))

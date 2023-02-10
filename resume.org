@@ -6,6 +6,7 @@
 #+TITLE: Software Engineer
 #+AUTHOR: XiongChenYu
 #+hugo_custom_front_matter: :author "Xiong ChenYu"
+#+hugo_section: ./.
 #+email: xiongchenyu6@gmail.com
 
 #+ADDRESS: Singapore
@@ -26,8 +27,7 @@
 + Develop online recommendation infrastructure and performance optimization tricks use C++.
 + Design and implement the base nearline infrastructure user event tracking aggregation system use Flink for multiple product lines.
 + Design and Build an internal streaming process framework extension focus on Id, Session Features and Forward Index based on Flink wrote in scala use shapeless for generics and scala macro for performance.
-+ Establish monitor system for recommendation system use prometheus promgen
-filebeat elasticsearch kibana grafana
++ Establish monitor system for recommendation system use prometheus promgen filebeat elasticsearch kibana grafana.
 
 ** Full stack Engineer
 :PROPERTIES:

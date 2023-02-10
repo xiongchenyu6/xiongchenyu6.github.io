@@ -4,6 +4,7 @@
 #+title: Shell
 #+date: [2021-11-20 Sat 19:19]
 
+
 * loop
 #+begin_src sh
 for x in {1..3}

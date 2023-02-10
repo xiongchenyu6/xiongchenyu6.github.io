@@ -3,8 +3,6 @@
 :END:
 #+title: openssl
 #+date: [2022-01-13 Thu 23:14]
-#+author:
-#+hugo_custom_front_matter: :author "Xiong ChenYu"
 
 * 自生成key以及签名
 :PROPERTIES:
@@ -12,7 +10,7 @@
 :EXPORT_DATE: <2021-11-23 Tue>
 :END:
 dsfasafafdsfdsaffdsafdafdsffdfdfadsfsfdfasf
-dafdsfdsfdsafsdfdfasdfdfsdf
+dafdsfdsfdsafsdfdfasdfdfsdfdsfaf
 
 #+begin_src sh
 openssl req -new -x509 -subj "/C=SG/CN=fingerone.com" \

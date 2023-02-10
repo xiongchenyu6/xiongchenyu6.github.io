@@ -4,8 +4,11 @@
 #+title: ocr
 #+date: [2023-01-31 Tue 16:11]
 
+how chainlink ocr works
+
 * Pacemaker
 
 * Report generation
 
 * Transmission
+

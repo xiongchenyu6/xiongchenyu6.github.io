@@ -7,8 +7,12 @@
 * network
  systemd-networkd come with systemd-resolved, if you want to use dnsmasq you should unable it first
 
-
 * core dump
 #+begin_src sh
 coredumpctl
+#+end_src
+
+* oom
+#+begin_src emacs-lisp
+
 #+end_src
