@@ -5,5 +5,17 @@
 #+date: [2023-02-10 Fri 17:05]
 
 
+* config
+#+begin_quote
+[default]
+aws_access_key_id = xxx
+aws_secret_access_key = xxx
+
+[mfa]
+source_profile = default
+role_arn = arn:aws:iam::xxxxx
+mfa_serial = arn:aws:iam::xxxx
+#+end_quote
+
 * gen token with timeout
 aws sts get-session-token --duration-seconds 8888
