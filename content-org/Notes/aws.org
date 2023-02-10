@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       f264e70d-2402-402a-b720-ef3d032fad71
+:END:
+#+title: aws
+#+date: [2023-02-10 Fri 17:05]
+
+
+aws sts get-session-token --duration-seconds 8888
