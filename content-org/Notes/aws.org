@@ -6,7 +6,7 @@
 
 
 * config
-#+begin_quote
+#+begin_example
 [default]
 aws_access_key_id = xxx
 aws_secret_access_key = xxx
@@ -15,7 +15,10 @@ aws_secret_access_key = xxx
 source_profile = default
 role_arn = arn:aws:iam::xxxxx
 mfa_serial = arn:aws:iam::xxxx
-#+end_quote
+#+end_example
 
 * gen token with timeout
+
+#+begin_src sh
 aws sts get-session-token --duration-seconds 8888
+#+end_src
