@@ -1,15 +1,28 @@
-baseURL = "http://example.org/"
-# [en, zh-cn, fr, ...] 设置默认的语言
-defaultContentLanguage = "zh-cn"
-# 网站语言, 仅在这里 CN 大写
-languageCode = "zh-CN"
-# 是否包括中日韩文字
-hasCJKLanguage = true
-# 网站标题
-title = "我的全新 Hugo 网站"
-
+baseURL = "https://xiongchenyu6.github.io/"
 # 更改使用 Hugo 构建网站时使用的默认主题
 theme = "LoveIt"
+# 网站标题
+title = "我的全新 Hugo 网站"
+# 设置默认的语言 ["en", "zh-cn", "fr", "pl", ...]
+defaultContentLanguage = "zh-cn"
+# language code ["en", "zh-CN", "fr", "pl", ...]
+# 网站语言, 仅在这里 CN 大写 ["en", "zh-CN", "fr", "pl", ...]
+languageCode = "zh-cn"
+# language name ["English", "简体中文", "Français", "Polski", ...]
+# 语言名称 ["English", "简体中文", "Français", "Polski", ...]
+languageName = "English"
+# 是否包括中日韩文字
+hasCJKLanguage = true
+
+# default amount of posts in each pages
+# 默认每页列表显示的文章数目
+paginate = 12
+# google analytics code [UA-XXXXXXXX-X]
+# 谷歌分析代号 [UA-XXXXXXXX-X]
+googleAnalytics = ""
+# copyright description used only for seo schema
+# 版权描述，仅仅用于 SEO
+copyright = ""
 
 # whether to use robots.txt
 # 是否使用 robots.txt
@@ -20,12 +33,87 @@ enableGitInfo = true
 # whether to use emoji code
 # 是否使用 emoji 代码
 enableEmoji = true
+
+
+# ignore some build errors
+# 忽略一些构建错误
+ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
+
+# Author config
+# 作者配置
+[author]
+  name = "xiongchenyu"
+  email = "xiongchenyu6@gmail.com"
+  link = "/images/avatar.png"
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
+    pre = ""
+    # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
+    post = ""
+    name = "文章"
+    url = "/posts/"
+    # 当你将鼠标悬停在此菜单链接上时, 将显示的标题
+    title = ""
+    weight = 1
+  [[menu.main]]
+    identifier = "notes"
+    # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
+    pre = ""
+    # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
+    post = ""
+    name = "笔记"
+    url = "/notes/"
+    # 当你将鼠标悬停在此菜单链接上时, 将显示的标题
+    title = ""
+    weight = 2
+  [[menu.main]]
+    identifier = "tags"
+    pre = ""
+    post = ""
+    name = "标签"
+    url = "/tags/"
+    title = ""
+    weight = 3
+  [[menu.main]]
+    identifier = "categories"
+    pre = ""
+    post = ""
+    name = "分类"
+    url = "/categories/"
+    title = ""
+    weight = 4
+  [[menu.main]]
+    identifier = "resume"
+    pre = ""
+    post = ""
+    name = "简历"
+    url = "/resume/"
+    title = ""
+    weight = 5
+
 [params]
-  # LoveIt 主题版本
-  version = "0.2.X"
   # site default theme ("light", "dark", "auto")
   defaultTheme = "dark"
   gitRepo = "https://github.com/xiongchenyu6/xiongchenyu6.github.io"
+    # which hash function used for SRI, when empty, no SRI is used
+  # ["sha256", "sha384", "sha512", "md5"]
+  # 哪种哈希函数用来 SRI, 为空时表示不使用 SRI
+  # ["sha256", "sha384", "sha512", "md5"]
+  fingerprint = ""
+  # date format
+  # 日期格式
+  dateFormat = "2006-01-02"
+  # website title for Open Graph and Twitter Cards
+  # 网站标题, 用于 Open Graph 和 Twitter Cards
+  title = "LoveIt"
+  # website description for RSS, SEO, Open Graph and Twitter Cards
+  # 网站描述, 用于 RSS, SEO, Open Graph 和 Twitter Cards
+  description = "Hugo theme - LoveIt"
+  # website images for Open Graph and Twitter Cards
+  # 网站图片, 用于 Open Graph 和 Twitter Cards
   images = ["/logo.png"]
 
   # Header config
@@ -74,7 +162,7 @@ enableEmoji = true
     author = true
     # site creation time
     # 网站创立年份
-    since = 2019
+    since = 2021
     # ICP info only in China (HTML format is supported)
     # ICP 备案信息，仅在中国使用 (支持 HTML 格式)
     icp = ""
@@ -482,7 +570,7 @@ enableEmoji = true
         [params.home.posts]
           enable = true
           # special amount of posts in each home posts page
-          paginate = 6
+          paginate = 10
       # Social config in home page
       [params.social]
         GitHub = "xiongchenyu6"
@@ -532,13 +620,6 @@ enableEmoji = true
     startLevel = 2
     endLevel = 6
 
-# Author config
-# 作者配置
-[author]
-  name = "xiongchenyu"
-  email = "xiongchenyu6@gmail.com"
-  link = "/images/avatar.png"
-
 # Sitemap config
 # 网站地图配置
 [sitemap]
@@ -581,50 +662,3 @@ enableEmoji = true
   taxonomy = ["HTML", "RSS"]
   taxonomyTerm = ["HTML"]
 
-[menu]
-  [[menu.main]]
-    identifier = "posts"
-    # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
-    pre = ""
-    # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
-    post = ""
-    name = "文章"
-    url = "/posts/"
-    # 当你将鼠标悬停在此菜单链接上时, 将显示的标题
-    title = ""
-    weight = 1
-  [[menu.main]]
-    identifier = "notes"
-    # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
-    pre = ""
-    # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
-    post = ""
-    name = "笔记"
-    url = "/notes/"
-    # 当你将鼠标悬停在此菜单链接上时, 将显示的标题
-    title = ""
-    weight = 2
-  [[menu.main]]
-    identifier = "tags"
-    pre = ""
-    post = ""
-    name = "标签"
-    url = "/tags/"
-    title = ""
-    weight = 3
-  [[menu.main]]
-    identifier = "categories"
-    pre = ""
-    post = ""
-    name = "分类"
-    url = "/categories/"
-    title = ""
-    weight = 4
-  [[menu.main]]
-    identifier = "resume"
-    pre = ""
-    post = ""
-    name = "简历"
-    url = "/resume/"
-    title = ""
-    weight = 5
