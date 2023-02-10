@@ -483,10 +483,6 @@ enableEmoji = true
           enable = true
           # special amount of posts in each home posts page
           paginate = 6
-        [params.home.notes]
-          enable = true
-          # special amount of posts in each home posts page
-          paginate = 6
       # Social config in home page
       [params.social]
         GitHub = "xiongchenyu6"
