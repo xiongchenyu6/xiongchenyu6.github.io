@@ -594,13 +594,24 @@ enableEmoji = true
     title = ""
     weight = 1
   [[menu.main]]
+    identifier = "notes"
+    # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
+    pre = ""
+    # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
+    post = ""
+    name = "笔记"
+    url = "/notes/"
+    # 当你将鼠标悬停在此菜单链接上时, 将显示的标题
+    title = ""
+    weight = 2
+  [[menu.main]]
     identifier = "tags"
     pre = ""
     post = ""
     name = "标签"
     url = "/tags/"
     title = ""
-    weight = 2
+    weight = 3
   [[menu.main]]
     identifier = "categories"
     pre = ""
@@ -608,7 +619,7 @@ enableEmoji = true
     name = "分类"
     url = "/categories/"
     title = ""
-    weight = 3
+    weight = 4
   [[menu.main]]
     identifier = "resume"
     pre = ""
@@ -616,4 +627,4 @@ enableEmoji = true
     name = "简历"
     url = "/resume/"
     title = ""
-    weight = 3
+    weight = 5
