@@ -5,4 +5,5 @@
 #+date: [2023-02-10 Fri 17:05]
 
 
+* gen token with timeout
 aws sts get-session-token --duration-seconds 8888
