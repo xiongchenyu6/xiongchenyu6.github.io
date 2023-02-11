@@ -542,9 +542,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         # whether to use the absolute URL based on the baseURL in search index
         absoluteURL = false
         [params.search.algolia]
-          index = "index.zh-cn"
-          appID = "2FB2E31TAG"
-          searchKey = "a9752f5e9c8b6b795671ed58969193ad"
+          index = "github"
+          appID = "IOVIG1JH44"
+          searchKey = "7561f1088d6810504a1454688d2154c9"
       # Home page config
       [params.home]
         # amount of RSS pages
