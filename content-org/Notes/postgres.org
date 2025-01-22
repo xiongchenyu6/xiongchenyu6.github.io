@@ -11,10 +11,11 @@ RUN psql -U username -d mydatabase -c "ALTER USER postgres WITH PASSWORD 'pass'"
 #+end_src
 * Create new table and new username
 #+begin_src sql
-create database gitea;
-create role gitea with login password 'gitea';
-grant all privileges on database gitea to gitea;
-CREATE DATABASE giteadb WITH OWNER gitea TEMPLATE template0 ENCODING UTF8 LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8';
+create database rustWebServer;
+create role rustWebServer with login password 'rustWebServer';
+grant all privileges on database rustWebServer to rustWebServer;
+CREATE DATABASE rustWebServerdb WITH OWNER rustWebServer TEMPLATE template0 ENCODING UTF8 LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8';
+Delete database rustWebServerdb;
 #+end_src
 * Export and import
 export
