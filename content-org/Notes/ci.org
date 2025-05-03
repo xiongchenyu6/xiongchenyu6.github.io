@@ -90,6 +90,7 @@ p.demo-para { color: green; }
 #+REVEAL_HTML: <div>
 - haho
 - hi
+- cool
 #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
@@ -105,6 +106,11 @@ p.demo-para { color: green; }
 #+begin_src js
 console.log("Hello World!");
 #+end_src
+
+#+RESULTS:
+: Hello World!
+: undefined
+
 ** scala                                                             :ATTACH:
 :PROPERTIES:
 :ID:       348C13EA-FA0D-46DA-BA71-BF3B990297A0
@@ -115,7 +121,6 @@ sealed trait Maybe[+T]
 final case object Empty extends Maybe[Nothing]
 final case class Just[T](t: T) extends Maybe[T]
 #+end_src
-
 #+RESULTS:
 : defined trait Maybe
 : defined object Empty
@@ -123,4 +128,9 @@ final case class Just[T](t: T) extends Maybe[T]
 
 #+DOWNLOADED: screenshot @ 2022-02-10 15:50:45
 [[attachment:2022-02-10_15-50-45_screenshot.png]]
-
+** 
+* Footnotes
+* COMMENT Local Variables                                   :ARCHIVE:
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:

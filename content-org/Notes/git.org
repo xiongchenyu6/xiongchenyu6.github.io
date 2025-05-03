@@ -18,6 +18,9 @@ git rm <path_to_submodule>
 git commit-m "Removed submodule "
 rm -rf .git/modules/<path_to_submodule>
 #+END_SRC
+** revert commits
+git revert --no-commit 0d1d7fc3..HEAD
+
 
 ** Clone with submodule recursive
 #+begin_src shell

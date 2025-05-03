@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       b34955a2-915d-4044-9188-16d64c714e5f
+:END:
+#+title: trip
+#+date: [2024-03-31 Sun 13:13]
+

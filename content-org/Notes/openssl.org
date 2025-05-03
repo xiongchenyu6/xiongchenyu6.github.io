@@ -4,13 +4,24 @@
 #+title: openssl
 #+date: [2022-01-13 Thu 23:14]
 
+* Request for public cert :openssl:@crypto:
+#+begin_src sh
+openssl genpkey -genparam -algorithm ec -pkeyopt ec_paramgen_curve:P-256 -out ECPARAM.pem
+openssl req -newkey ec:ECPARAM.pem -keyout PRIVATEKEY.key -out MYCSR.csr
+#+end_src
+
+* compare cert public key and public key from private key
+
+#+begin_src sh
+openssl x509 -pubkey -in SERVER.cert -noout
+openssl pkey -pubout -in PRIVATEKEYNOPASS.key     
+#+end_src
+
+* remove passphrase
+#+begin_src sh
+openssl ec -in xxx -out xxx
+#+end_src
 * 自生成key以及签名
-:PROPERTIES:
-:EXPORT_FILE_NAME: how-to-generate-self-signed-certificates
-:EXPORT_DATE: <2021-11-23 Tue>
-:END:
-dsfasafafdsfdsaffdsafdafdsffdfdfadsfsfdfasf
-dafdsfdsfdsafsdfdfasdfdfsdfdsfaf
 
 #+begin_src sh
 openssl req -new -x509 -subj "/C=SG/CN=fingerone.com" \
@@ -37,21 +48,8 @@ openssl req -new -x509 -subj "/C=SG/CN=riskcontrol.com" \
 openssl pkcs12 -export -out identity.pfx -inkey riskcontrol.pem -in riskcontrol.pem -certfile riskcontrol.pem
 #+end_src
 
-* Request for public cert
-#+begin_src sh
-openssl genpkey -genparam -algorithm ec -pkeyopt ec_paramgen_curve:P-256 -out ECPARAM.pem
-openssl req -newkey ec:ECPARAM.pem -keyout PRIVATEKEY.key -out MYCSR.csr
-#+end_src
-
-
-* compare cert public key and public key from private key
-
-#+begin_src sh
-openssl x509 -pubkey -in SERVER.cert -noout
-openssl pkey -pubout -in PRIVATEKEYNOPASS.key     
-#+end_src
-
-* remove passphrase
-#+begin_src sh
-openssl ec -in xxx -out xxx
-#+end_src
+* Footnotes
+* COMMENT Local Variables                                   :ARCHIVE:
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:

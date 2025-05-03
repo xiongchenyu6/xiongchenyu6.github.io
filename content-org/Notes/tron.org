@@ -28,4 +28,8 @@
 
 [[https://bt.io/bridge/][Bittorrent Bridge]]
 
-* TODO
+* Tron zero trust stack
+** zero trust vpn Netbird
+** zero trust cert spire
+** zero trust service mesh linkerd
+** system nixos

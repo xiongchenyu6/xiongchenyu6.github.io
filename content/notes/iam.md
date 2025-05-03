@@ -1,0 +1,22 @@
++++
+title = "iam"
+date = 2023-01-28T08:10:00+08:00
+draft = false
+author = "Xiong ChenYu"
++++
+
+## Problem {#problem}
+
+iam can not bind to ec2
+
+check `fetch-ec2-metadata.service` if iam roles not working
+
+If IAM roles are not working on an EC2 instance, checking the `fetch-ec2-metadata.service` can help ensure that the instance metadata is being retrieved correctly. Follow these steps:
+
+1.  **Check Service Status**: Run `systemctl status fetch-ec2-metadata.service` to see if the service is active and running.
+2.  **View Logs**: Use `journalctl -u fetch-ec2-metadata.service` to inspect logs for any errors or warnings related to fetching metadata.
+3.  **Verify Metadata Access**: Ensure the instance can access the metadata service by running `curl http://169.254.169.254/latest/meta-data/`. You should see metadata output if it's working.
+4.  **IAM Role Association**: Confirm the IAM role is attached to the EC2 instance in the AWS Console or via CLI (`aws ec2 describe-instances`).
+5.  **Restart Service**: If issues persist, try restarting the service with `systemctl restart fetch-ec2-metadata.service`.
+
+If the service or metadata access fails, there might be network issues, security group restrictions, or misconfigured IAM role trust policies. Check AWS documentation for further troubleshooting.

@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       8a821f53-9914-440e-8d8f-2a4bab98de0e
+:END:
+#+title: hecodao
+#+date: [2023-09-26 Tue 13:44]
+
+How to use metamask to get money back from heco dao
+
+1. install metamask extension on chrome
+2. import the mnemonic of your wallet
+3. add heco mainnet network configuration to metamask
+   - Network Name: Heco Mainnet
+   - New RPC URL: https://http-mainnet-node.huobichain.com
+   - ChainID: 128
+   - Symbol: HT
+   - Block Explorer URL: https://hecoinfo.com
+4. open https://www.hecoinfo.com/en-us/address/0x2397dbee69114e2203bb424b4e84e9af2d7ee39b?tab=Contract
+5. click "Connect to Web3" button on the top right corner
+6. find Contract section, click "Write as proxy" button
+7. click "write" below "unstake" button
+8. wait 15 days until locking period is over
+9. click "write" below "withdraw" button
+10. now your money get back to your wallet

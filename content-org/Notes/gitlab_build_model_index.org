@@ -81,4 +81,3 @@ cloud yarn {
 
 #+RESULTS:
 [[file:i/current2.png]]
-

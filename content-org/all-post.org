@@ -366,7 +366,7 @@ dsaf
 {{< youtube w7Ft2ymGmfc >}}
 
 * Image / Figure                                                      :image:
-** Image links :@fsdf:
+** Image links :@image:
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_RESOURCES: :src "featured-image.jpg" :name "featured-image"
@@ -386,5 +386,11 @@ Here are the /details/.
 Some Summary
 #+end_summary
 Here are the /details/.
+test
 #+end_details
 
+* Footnotes
+* COMMENT Local Variables                                   :ARCHIVE:
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:

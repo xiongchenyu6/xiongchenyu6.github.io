@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       7f48bfb6-ba4f-4614-91e1-03c1b02a32af
+:END:
+#+title: nomad
+#+date: [2023-08-15 Tue 14:54]
+
+
+job "nixpkgs" {
+  datacenters = ["dc1"]
+  type        = "service"
+  group "nixpkgs" {
+   network {
+      port "www" {
+        static = 8000
+      }
+    }
+    service {
+      provider = "nomad"
+      port     = "www"
+    }
+  task "nixpkgs" {
+      driver = "nix"
+      resources {
+        memory = 100
+        cpu = 300
+      }
+      config {
+        packages = [
+          "github:nixos/nixpkgs/nixos-unstable#python3",
+          ]
+        command = ["python3", "-m", "http.server" ,"${NOMAD_PORT_www}"]
+    }
+   }
+  }
+}

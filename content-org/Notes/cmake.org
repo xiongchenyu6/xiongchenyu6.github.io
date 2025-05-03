@@ -1,9 +1,0 @@
-:PROPERTIES:
-:ID:       22005da3-c5af-4c8d-8d22-eb05becd4733
-:END:
-#+title: Cmake
-#+date: [2021-11-20 Sat 12:20]
-
-So i think extraordinary things are happening here. I have no idea what is going on. I have no idea how to fix it. I have no idea how to debug it. I have no idea how to reproduce it. I have no idea how to prevent it. I have no idea how to work around it. I have no idea how to live with it. I have no idea how to live without it. I have no idea how to live.
-
-

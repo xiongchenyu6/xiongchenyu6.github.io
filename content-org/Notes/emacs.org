@@ -75,10 +75,10 @@ return pic
 #+end_src
 
 #+RESULTS:
-[[file:Image/myfig.png]]
+[[file:]]
 
 
-#+BEGIN_SRC plantuml :exports both :file Image/activate.png
+#+BEGIN_SRC plantuml :exports both :file i/activate.png
 title Example Sequence Diagram
 activate Client
 Client -> Server: Session Initiation
@@ -96,10 +96,10 @@ deactivate Client
 #+END_SRC
 
 #+RESULTS:
-[[file:Image/activate.png]]
+[[file:i/activate.png]]
 
 
-#+BEGIN_SRC ditaa :exports both :file Image/ac.png
+#+BEGIN_SRC ditaa :exports both :file i/ac.png
 
         |         |                  +------------------------+
         |         |                  | cBLU                   |

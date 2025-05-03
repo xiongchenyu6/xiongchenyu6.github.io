@@ -5,6 +5,34 @@
 #+date: [2021-11-20 Sat 16:12]
 
 
+* Setup new key
+#+begin_src sh
+export KEY_NAME="office.trontech.link"
+export KEY_COMMENT="flux secrets"
+
+gpg --batch --full-generate-key <<EOF
+%no-protection
+Key-Type: 1
+Key-Length: 4096
+Subkey-Type: 1
+Subkey-Length: 4096
+Expire-Date: 0
+Name-Comment: ${KEY_COMMENT}
+Name-Real: ${KEY_NAME}
+EOF
+
+gpg --list-secret-keys "${KEY_NAME}"
+
+export KEY_FP="A27D 0937 F9E0 95BB 9B24  7B49 778B 8150 7612 BF48"
+
+
+gpg --export-secret-keys --armor "${KEY_FP}" |
+kubectl create secret generic sops-gpg \
+--namespace=flux-system \
+--from-file=sops.asc=/dev/stdin
+
+gpg --delete-secret-keys "${KEY_FP}"
+#+end_src
 
 * Setup permission
 #+begin_src sh
@@ -12,9 +40,12 @@ find ~/.gnupg -type f -exec chmod 600 {} \; # Set 600 for files
 find ~/.gnupg -type d -exec chmod 700 {} \; # Set 700 for directories
 #+end_src
 * GNUPG
-** Encryption
+** Encryption                                                       :ATTACH:
+:PROPERTIES:
+:ID:       46558094-5fa8-41ff-bd12-08ec64add6c4
+:END:
 Use recipient public key to encrypt message so only recipient can decrypt and view it
-[[attachment:_20211121_110136screenshot.png]]
+[[attachment:clipboard-20250617T142342.png]]
 *** decrypt :ATTACH:
 #+BEGIN_SRC shell
 gpg --decrypt a.sh.gpg
@@ -23,14 +54,19 @@ gpg -q --pinentry-mode loopback --for-your-eyes-only --no-tty -d ~/.password/gma
 
 #+RESULTS:
 
+
 *** encrypt
 #+BEGIN_SRC shell
 gpg --encrypt -r person@email.com name_of_file
 gpg --encrypt name_of_file
 #+END_SRC
-** Sign
+** Sign                                                             :ATTACH:
+:PROPERTIES:
+:ID:       fd01ecdb-3259-4fd2-901d-fe0de434f5be
+:END:
 Use sender private key to encrypt message so everyone can verify the sender identity
-[[attachment:_20211121_110201screenshot.png]]
+[[attachment:clipboard-20250617T142323.png]]
+
 
 #+begin_src sh
 gpg -b sample.txt
@@ -49,8 +85,11 @@ gpg --verify sample.txt.asc
 echo "ee7d52053138e716702261914a330059ed470b1106b75569b18326e9c1e04d27" | gpg -a --default-key 5AF7AFBF695E8A5D --detach-sig
 #+end_src
 
-** Signature alongside encrypt
-
+** Signature alongside encrypt                                      :ATTACH:
+:PROPERTIES:
+:ID:       19189f78-4e9d-40f1-bc96-17941a305993
+:END:
+[[attachment:clipboard-20250617T142237.png]]
 #+begin_src sh
 gpg -s sample.txt # sign sample.txt.sig
 gpg --verify a.sh.gpg
@@ -59,11 +98,11 @@ gpg --decrypt a.sh.gpg
 
 
 ** Transfer key
-*** export
+*** exportq
 #+begin_src shell
-gpg --export --armor your@id.here > your@id.here.pub.asc
-gpg --export-secret-keys --armor your@id.here > your@id.here.priv.asc
-gpg --export-secret-subkeys --armor your@id.here > your@id.here.sub_priv.asc
+gpg --export --armor > public.key
+gpg --export-secret-keys > private.key
+gpg --export-secret-subkeys --armor > sub_private.key
 gpg --export-ownertrust > ownertrust.txt
 #+end_src
 *** delete
@@ -92,4 +131,10 @@ gpg --edit-key xiongchenyu
 g> expire
 g> key 1
 g> expire
+
 #+end_src
+* Footnotes
+* COMMENT Local Variables                                   :ARCHIVE:
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:

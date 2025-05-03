@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       b177b542-1fd6-4731-a990-08ffa510fd9b
+:END:
+#+title: easyrsa
+#+date: [2023-08-09 Wed 21:40]
+
+#+begin_src sh
+easyrsa init-pki
+#+end_src

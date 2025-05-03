@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       50f05072-4ab2-415b-8518-bd0826fba791
+:END:
+#+title: okx
+#+date: [2023-05-12 Fri 10:52]
+
+加密货币钱包调研
+
+社交便利性
+
+#+begin_src plantuml :results both :file i/okx.png
+@startuml
+title Multi-Party Computation (MPC) for 2-out-of-3 Signature Scheme with Public Blockchain
+
+actor "OKX Exchange" as Exchange
+actor "User Device" as Device
+actor "Google Cloud" as Cloud
+actor "Public Blockchain" as Blockchain
+
+
+Device -> Blockchain: Generate 3 secret shares
+Blockchain -> Exchange: Share 1 of 3
+Blockchain -> Cloud: Share 2 of 3
+Device -> Exchange: Share 3 of 3
+
+alt First signature (Daily usage)
+    Device -> Exchange: Sign transaction with Device key
+    Exchange -> Device: Return signed transaction
+    Device -> Blockchain: Publish signed transaction
+else Second signature (OKX bankrupt)
+    Cloud -> Device: Provide Cloud's share to user
+    Device -> Blockchain: Publish signed transaction
+else Third signature (Restore process)
+    New_Device -> Exchange: Request to restore share
+    Exchange -> New_Device: key1
+    Cloud -> New_Device: key2
+end
+@enduml
+#+end_src
+
+#+RESULTS:
+[[file:i/okx.png]]
+
+* Footnotes
+* COMMENT Local Variables                                   :ARCHIVE:
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:

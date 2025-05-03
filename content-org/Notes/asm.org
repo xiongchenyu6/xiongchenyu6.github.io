@@ -65,4 +65,9 @@ The called routine is expected to preserve rsp,rbp, rbx, r12, r13, r14, and r15 
 * 看内存
 内存地址格式为： 0x4bdc(%rip), 一般是全局变量，全局区（数据段）
 内存地址格式为：-0x78(%rbp), 一般是局部变量，栈空间
-内存地址格式为：0x10(%rax), 一般是堆空间
+存地址格式为：0x10(%rax), 一般是堆空间
+
+* COMMENT Local Variables                                   :ARCHIVE:
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:

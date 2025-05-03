@@ -2,7 +2,7 @@
 title = "Image links"
 date = 2017-07-15T07:49:44-04:00
 tags = ["image"]
-categories = ["fsdf"]
+categories = ["image"]
 draft = false
 author = "Xiong ChenYu"
 [[resources]]
@@ -26,5 +26,6 @@ Here are the _details_.
 <div class="details">
 
 Here are the _details_.
+test
 </div>
 </details>

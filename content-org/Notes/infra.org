@@ -1,0 +1,45 @@
+:PROPERTIES:
+:ID:       1d98d720-2701-45cf-8671-eb58e9c52f0e
+:END:
+#+title: infra
+#+date: [2023-05-22 Mon 11:42]
+波厂新加坡基建
+
+* 技术选型
+** 语言java go为主
+** 数据库mysql postgres redis
+
+* 服务器申请
+infrastructure as code. pulumi to generate aws resources
+
+* 身份认证账户以及权限
+** Kerberos
+Kerberos 是一个网络认证协议，它通过密钥系统为客户机/服务器应用程序提供强大的身份验证服务。Kerberos 是一个单点登录系统，这意味着用户只需要登录一次，就可以访问多个服务器。Kerberos 也是一个分布式的认证协议，它可以通过安全的方式验证客户端和服务器的身份。Kerberos 通过使用密钥系统来防止窃听、重放、欺骗等攻击。
+** OpenLdap
+** SSSD
+** Keycloak rbac
+
+* 网络防火墙网段
+172.32 / 16 nix 实体集群网段
+10.0 / 8 k8S云原生集群网段
+
+生产 办公区 测试 3层防火墙隔离 aws iptables traefik-middlewares
+
+去中心化的VPN 基于netbird 每次连接都会生成一个新的vpn地址，这样就不会有一个固定的vpn地址，可以防止被攻击。udp无法被嗅探。保证安全
+
+* 项目迭代发版
+** nix 时代 (2022-2023)
+*** User account and Security
+*** build as code, Nix 是一个支持 Linux 和 macOS 的独特的“函数式包管理器”，具有原子更新、依赖隔离、构建尽可能可复现等特点。
+
+** 云原生时代 (2023-)
+推行 XXX as code 的理念，因为代码基于git，所以可以做到任何变动都有版本控制，审计，回滚等等，这是传统的管理方式所不具备的。
+infrastructure as code
+api test as code
+deployment as code
+monitoring as code
+alert as code
+
+* 网络数据安全
+ server private key -> store in yubikey
+ enable 2fa in code base gitlab

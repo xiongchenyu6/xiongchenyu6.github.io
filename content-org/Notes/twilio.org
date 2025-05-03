@@ -1,8 +1,0 @@
-:PROPERTIES:
-:ID:       e8d485f9-4b6b-41e1-a111-8b73078fb5d9
-:END:
-#+title: twilio
-#+date: [2022-11-27 Sun 21:33]
-
-* twilio
-oSehc85FeU5rl7bqn1DH3G3GrX48sRASsFGzgjz0

@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       18721ea4-d9e5-4235-9c59-92329142e15d
-:ROAM_REFS: https://www.orgroam.com/manual.html#Refs
-:END:
-#+title: Org-roam User Manual
-Check more on [[id:AF138CE6-A10F-42CC-B381-EA6C195647EE][Org]]
